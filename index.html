@@ -1,0 +1,1214 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Tugas RPL — Bukit Senyum | [NAMA LENGKAP]</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
+<style>
+  :root{
+    --hijau-tua:#1a3d2b;
+    --hijau:#2d6a4f;
+    --hijau-muda:#52b788;
+    --kuning:#f4a261;
+    --krem:#fefae0;
+    --coklat:#774936;
+    --putih:#ffffff;
+    --abu:#f0ebe3;
+    --teks:#1c1c1c;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Lato',sans-serif;background:var(--krem);color:var(--teks);line-height:1.7;}
+
+  /* COVER */
+  .cover{
+    background: linear-gradient(135deg,var(--hijau-tua) 0%,var(--hijau) 60%,var(--hijau-muda) 100%);
+    color:#fff; padding:80px 40px; text-align:center; position:relative; overflow:hidden;
+  }
+  .cover::before{
+    content:''; position:absolute; inset:0;
+    background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  .cover-badge{display:inline-block;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);padding:6px 18px;border-radius:50px;font-size:.75rem;letter-spacing:2px;text-transform:uppercase;margin-bottom:24px;}
+  .cover h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3.5rem);font-weight:900;line-height:1.2;margin-bottom:16px;}
+  .cover h1 span{color:var(--kuning);}
+  .cover p{font-size:1.05rem;opacity:.85;max-width:600px;margin:0 auto 32px;}
+  .identity-card{display:inline-flex;flex-direction:column;gap:6px;background:rgba(255,255,255,.12);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.2);border-radius:16px;padding:20px 40px;text-align:left;}
+  .identity-card .label{font-size:.7rem;letter-spacing:1.5px;text-transform:uppercase;opacity:.6;}
+  .identity-card .value{font-size:1rem;font-weight:700;}
+
+  /* NAV */
+  nav{background:var(--hijau-tua);position:sticky;top:0;z-index:100;padding:0 24px;}
+  nav ul{display:flex;list-style:none;overflow-x:auto;gap:4px;padding:0;}
+  nav ul li a{display:block;padding:14px 16px;color:rgba(255,255,255,.7);text-decoration:none;font-size:.8rem;letter-spacing:.5px;white-space:nowrap;transition:all .2s;border-bottom:3px solid transparent;}
+  nav ul li a:hover,nav ul li a.active{color:#fff;border-bottom-color:var(--kuning);}
+
+  /* SECTIONS */
+  .section{padding:60px 0;border-bottom:1px solid #e0d9cc;}
+  .container{max-width:960px;margin:0 auto;padding:0 24px;}
+  .section-label{display:inline-block;background:var(--hijau);color:#fff;font-size:.7rem;letter-spacing:2px;text-transform:uppercase;padding:4px 12px;border-radius:4px;margin-bottom:12px;}
+  .section h2{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,3vw,2.2rem);color:var(--hijau-tua);margin-bottom:24px;line-height:1.3;}
+  .section h3{font-size:1.1rem;font-weight:700;color:var(--hijau);margin:28px 0 10px;border-left:4px solid var(--hijau-muda);padding-left:12px;}
+
+  /* CARDS */
+  .card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;margin:20px 0;}
+  .card{background:#fff;border-radius:16px;padding:24px;box-shadow:0 2px 12px rgba(0,0,0,.06);border:1px solid #e8e0d4;transition:transform .2s,box-shadow .2s;}
+  .card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,0,0,.1);}
+  .card-icon{font-size:2rem;margin-bottom:12px;}
+  .card h4{font-size:1rem;font-weight:700;margin-bottom:8px;color:var(--hijau-tua);}
+  .card p{font-size:.88rem;color:#555;}
+
+  /* TABLES */
+  table{width:100%;border-collapse:collapse;margin:16px 0;font-size:.88rem;}
+  th{background:var(--hijau-tua);color:#fff;padding:10px 14px;text-align:left;font-weight:600;}
+  td{padding:10px 14px;border-bottom:1px solid #e8e0d4;}
+  tr:nth-child(even) td{background:#f9f6ef;}
+  tr:hover td{background:#f0ebe3;}
+
+  /* BADGE */
+  .badge{display:inline-block;padding:3px 10px;border-radius:20px;font-size:.75rem;font-weight:700;}
+  .badge-green{background:#d4edda;color:#155724;}
+  .badge-yellow{background:#fff3cd;color:#856404;}
+  .badge-red{background:#f8d7da;color:#721c24;}
+
+  /* INFO BOX */
+  .info-box{background:linear-gradient(135deg,#e8f5e9,#f1f8e9);border-left:4px solid var(--hijau-muda);border-radius:0 12px 12px 0;padding:20px 24px;margin:20px 0;}
+  .warn-box{background:#fff8e1;border-left:4px solid var(--kuning);border-radius:0 12px 12px 0;padding:20px 24px;margin:20px 0;}
+
+  /* UML AREA */
+  .uml-wrap{background:#fff;border:2px solid #e8e0d4;border-radius:16px;padding:24px;margin:20px 0;overflow-x:auto;}
+  .uml-wrap svg{max-width:100%;height:auto;display:block;margin:0 auto;}
+
+  /* REFLEKSI */
+  .refleksi-box{background:linear-gradient(135deg,var(--hijau-tua),var(--hijau));color:#fff;border-radius:20px;padding:40px;margin:20px 0;}
+  .refleksi-box p{opacity:.9;line-height:1.8;margin-bottom:16px;}
+  .refleksi-box h3{color:var(--kuning);margin:24px 0 10px;font-family:'Playfair Display',serif;font-size:1.2rem;}
+
+  /* HARGA TABLE */
+  .harga-section{background:#fff;border-radius:16px;padding:24px;margin:16px 0;border:1px solid #e8e0d4;}
+  .harga-title{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--hijau-tua);margin-bottom:16px;display:flex;align-items:center;gap:10px;}
+  .price-tag{background:var(--kuning);color:var(--hijau-tua);font-weight:900;padding:2px 10px;border-radius:6px;font-size:.9rem;}
+
+  /* FOOTER */
+  footer{background:var(--hijau-tua);color:rgba(255,255,255,.7);text-align:center;padding:32px;font-size:.85rem;}
+  footer strong{color:#fff;}
+
+  @media(max-width:600px){
+    .cover{padding:50px 20px;}
+    .identity-card{padding:16px 24px;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== COVER ===== -->
+<div class="cover">
+  <div class="cover-badge">Tugas Individu · Rekayasa Perangkat Lunak · Semester 2</div>
+  <h1>Studi Kasus:<br><span>Wisata Bukit Senyum</span></h1>
+  <p>Membangun Perangkat Lunak Berbasis Potensi Lokal — Mengangkat Keindahan Alam Perbukitan Melalui Teknologi Digital</p>
+  <div class="identity-card">
+    <div><span class="label">Nama Lengkap</span><br><span class="value">[Rivanny p simanjuntak]</span></div>
+    <div><span class="label">NIM</span><br><span class="value">[253303611221]</span></div>
+    <div><span class="label">Kelas</span><br><span class="value">[Teknik informatika pagi A]</span></div>
+    <div><span class="label">Mata Kuliah</span><br><span class="value">Rekayasa Perangkat Lunak</span></div>
+  </div>
+</div>
+
+<!-- ===== NAV ===== -->
+<nav>
+  <ul>
+    <li><a href="#soal1">Soal 1 · Potensi Lokal</a></li>
+    <li><a href="#soal2">Soal 2 · Analisis Kebutuhan</a></li>
+    <li><a href="#soal3">Soal 3 · Arsitektur</a></li>
+    <li><a href="#soal4">Soal 4 · Use Case</a></li>
+    <li><a href="#soal5">Soal 5 · Activity</a></li>
+    <li><a href="#soal6">Soal 6 · Class Diagram</a></li>
+    <li><a href="#soal7">Soal 7 · Prototipe</a></li>
+    <li><a href="#soal8">Soal 8 · Refleksi</a></li>
+  </ul>
+</nav>
+
+<!-- ===== SOAL 1 ===== -->
+<section class="section" id="soal1">
+<div class="container">
+  <span class="section-label">Bagian A · Soal 1</span>
+  <h2>Identifikasi Potensi Lokal</h2>
+
+  <h3>Nama & Deskripsi Potensi</h3>
+  <p><strong>Bukit Senyum</strong> adalah destinasi wisata alam perbukitan yang menyuguhkan potret alam yang indah dan asri.seperti namanya yaitu bukit senyum ketika kita berada disana kita akan langsung tersenyum dan selalu ingin mengunjunginya kembali.Disini juga menawarkan area terbuka yang dapat kita gunakan contohnya camping ground,pendopo, untuk menghabiskan waktu dengan keluarga atau teman,juga  ada warung tradisional khas.</p>
+
+  <h3>Lokasi & Asal Daerah</h3>
+  <div class="info-box">
+    <strong>📍 Lokasi:</strong> Bukit Senyum terletak tepatnya di Desa Motung,Kecamatan Ajibata Kabupaten Toba.Menuju Bukit Senyum dapat dijangkau dengan kendaraan pribadi(motor,mobil) ataupun Bus Parawisata.
+  </div>
+
+  <h3>Daftar Harga Resmi Bukit Senyum</h3>
+
+  <div class="harga-section">
+    <div class="harga-title">🎫 Tiket Masuk <span class="price-tag">Per Kendaraan</span></div>
+    <table>
+      <thead><tr><th>Jenis Kendaraan</th><th>Harga Tiket</th><th>Keterangan</th></tr></thead>
+      <tbody>
+        <tr><td>🏍️ Sepeda Motor</td><td><strong>Rp 5.000</strong></td><td>Sudah termasuk penumpang</td></tr>
+        <tr><td>🚗 Mobil / SUV</td><td><strong>Rp 10.000</strong></td><td>Sudah termasuk 4 penumpang</td></tr>
+        <tr><td>🚐 Minibus / ELF</td><td><strong>Rp 30.000</strong></td><td>Kapasitas hingga 12 penumpang</td></tr>
+  
+        <tr><td>🚌 Bus Pariwisata</td><td><strong>Rp 50.000</strong></td><td>Kapasitas di atas 12 penumpang</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="harga-section">
+    <div class="harga-title">⛺ Area Camping <span class="price-tag">Per Malam</span></div>
+    <table>
+      <thead><tr><th>Paket</th><th>Harga</th><th>Fasilitas</th></tr></thead>
+      <tbody>
+        <tr><td>Camping Reguler (1 tenda kecil, maks 2 orang)</td><td><strong>Rp 130.000</strong></td><td>Lahan + tenda + akses toilet umum+air bersih</td></tr>
+        <tr><td>Camping Reguler (1 tenda besar, maks 4 orang)</td><td><strong>Rp 250.000</strong></td><td>Lahan + tenda +toilet umum + air bersih</td></tr>
+        <tr><td>camping Reguler (1 tenda besar, maks 5-6orang)</td><td><strong>Rp 350.000</strong></td><td>Lahan+ tenda + toilet umum + air bersih)</td></tr>
+        <tr><td>Glamping (1 tenda besar,maks 6 orang)</td><td><strong>Rp 1.250.000-1.950.000</strong></td><td>Lahan+ tenda + akses toilet umum + air bersih + parkir gratis + sofa angin + tempat tidur angin + meja +kursi + bantal + selimut.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="harga-section">
+    <div class="harga-title">🏛️ Pendopo / Gazebo <span class="price-tag">Per Sesi</span></div>
+    <table>
+      <thead><tr><th>Fasilitas</th><th>Harga Sewa</th><th>Durasi & Kapasitas</th></tr></thead>
+      <tbody>
+        <tr><td>pendopo Kecil (4-6 orang)</td><td><strong>Rp 30.000</strong></td><td>tidak ada batas waktu, max 4-6 orang</td></tr>
+        <tr><td>pendopo kecil + Tikar (4-6 orang)</td><td><strong>Rp 50.000</strong></td><td>tidak ada batasan waktu</td></tr>
+        <tr><td>Pendopo Besar (50 orang)</td><td><strong>Rp 300.000</strong></td><td>tidak ada batas waktu</td></tr>
+      
+        
+      </tbody>
+    </table>
+  </div>
+
+  <div class="harga-section">
+    <div class="harga-title">🍽️ Menu Makanan & Minuman <span class="price-tag">Warung Bukit Senyum</span></div>
+    <table>
+      <thead><tr><th>Menu</th><th>Harga</th><th>Kategori</th></tr></thead>
+      <tbody>
+        <tr><td>Nasi Goreng Spesial</td><td><strong>Rp 18.000</strong></td><td>Makanan Berat</td></tr>
+        <tr><td>Mie Goreng / Mie Rebus</td><td><strong>Rp 15.000</strong></td><td>Makanan Berat</td></tr>
+        <tr><td>pop mie</td><td><strong>Rp 10.000</strong></td><td>Makanan Berat</td></tr>
+        <tr><td>Bakso Kuah</td><td><strong>Rp 15.000</strong></td><td>Makanan Berat</td></tr>
+        
+    
+        <tr><td>Indomie Goreng/Rebus</td><td><strong>Rp 15.000</strong></td><td>Camilan</td></tr>
+        <tr><td>Kopi Hitam / Kopi Susu</td><td><strong>Rp 10.000</strong></td><td>Minuman</td></tr>
+        <tr><td>Teh Manis Panas/Dingin</td><td><strong>Rp 5.000</strong></td><td>Minuman</td></tr>
+        <tr><td>Air Mineral Botol</td><td><strong>Rp 5.000</strong></td><td>Minuman</td></tr>
+        
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Mengapa Belum Dikenal Luas?</h3>
+  <div class="card-grid">
+    <div class="card"><div class="card-icon">📵</div><h4>Minim Kehadiran Digital</h4><p>Bukit Senyum sudah mulai dalam proses perkembangan,tetapi banyak pengunjung yang tidak mengekspos dan juga ada yang mengekspos tetapi tidak FYP.</p></div>
+    <div class="card"><div class="card-icon">📋</div><h4>Informasi Tidak Terstruktur</h4><p>Informasi harga, fasilitas, dan cara pemesanan hanya diketahui dari mulut ke mulut, sehingga banyak pengunjung potensial tidak mendapat informasi yang akurat.</p></div>
+    <div class="card"><div class="card-icon">🚫</div><h4>Belum Ada Reservasi Online</h4><p>Pengunjung harus datang langsung untuk mengetahui ketersediaan pendopo atau area camping, yang membuat kadang tidak mendapatkan tempat.</p></div>
+  </div>
+
+  <h3>Dampak Jika Dipromosikan Secara Digital</h3>
+  <ul style="margin-left:20px;margin-top:10px;line-height:2;">
+    <li>Jangkauan pengunjung meluas ke luar daerah, bahkan wisatawan mancanegara.</li>
+    <li>Pendapatan pengelola dan UMKM sekitar meningkat signifikan.</li>
+    <li>Kearifan lokal dan keindahan alam daerah terdokumentasi dan terjaga.</li>
+    <li>Sistem reservasi online mengurangi antrian dan meningkatkan kepuasan pengunjung.</li>
+  </ul>
+
+  <h3>Target Pengguna Utama</h3>
+  <div class="card-grid">
+    <div class="card"><div class="card-icon">🏕️</div><h4>Pecinta Alam & Camper</h4><p>Komunitas hiking, camping, dan outdoor yang mencari spot baru di Sumatera Utara.</p></div>
+    <div class="card"><div class="card-icon">👨‍👩‍👧</div><h4>Wisatawan Keluarga</h4><p>Keluarga yang mencari rekreasi alam akhir pekan yang terjangkau dan aman.</p></div>
+    <div class="card"><div class="card-icon">🏢</div><h4>Komunitas & Korporat</h4><p>Kelompok yang mencari venue pendopo untuk gathering, arisan, atau outbound.</p></div>
+    <div class="card"><div class="card-icon">🛠️</div><h4>Admin Pengelola</h4><p>Pengelola wisata yang membutuhkan sistem manajemen konten dan reservasi yang mudah.</p></div>
+  </div>
+</div>
+</section>
+
+<!-- ===== SOAL 2 ===== -->
+<section class="section" id="soal2">
+<div class="container">
+  <span class="section-label">Bagian A · Soal 2</span>
+  <h2>Analisis Kebutuhan Sistem</h2>
+
+  <h3>Kebutuhan Fungsional</h3>
+  <table>
+    <thead><tr><th>No</th><th>Fitur</th><th>Deskripsi Spesifik</th></tr></thead>
+    <tbody>
+      <tr><td>F01</td><td>Halaman Informasi Tiket</td><td>Sistem menampilkan tabel harga tiket masuk per jenis kendaraan (motor, mobil, minibus, bus) secara real-time yang dapat diperbarui admin.</td></tr>
+      <tr><td>F02</td><td>Halaman & Booking Camping</td><td>Sistem menampilkan 4 paket camping beserta harga, fasilitas, dan ketersediaan kapasitas. Pengunjung dapat melakukan reservasi dengan mengisi form minimal 2×24 jam sebelum kunjungan.</td></tr>
+      <tr><td>F03</td><td>Halaman & Reservasi Pendopo</td><td>Sistem menampilkan 5 pilihan pendopo/gazebo dengan harga, kapasitas, dan jadwal ketersediaan berbasis kalender. Pengunjung dapat memesan dengan upload bukti pembayaran DP minimal 50%.</td></tr>
+      <tr><td>F04</td><td>Menu Makanan & Minuman</td><td>Sistem menampilkan daftar menu lengkap beserta harga dari warung di Bukit Senyum dalam format kartu yang dapat difilter berdasarkan kategori (makanan berat, camilan, minuman).</td></tr>
+      <tr><td>F05</td><td>Galeri Foto & Video</td><td>Sistem menampilkan minimal 20 foto beresolusi tinggi dan 2 video pendek yang mencerminkan suasana Bukit Senyum, dapat difilter per kategori (landscape, camping, pendopo, kuliner).</td></tr>
+      <tr><td>F06</td><td>Form Kontak & WhatsApp</td><td>Sistem menyediakan form kontak yang terhubung ke email pengelola dan tombol WhatsApp langsung untuk komunikasi cepat.</td></tr>
+      <tr><td>F07</td><td>Peta Lokasi Interaktif</td><td>Sistem menampilkan peta Google Maps yang menunjukkan lokasi tepat Bukit Senyum beserta rute dari kota terdekat.</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Kebutuhan Non-Fungsional</h3>
+  <div class="card-grid">
+    <div class="card"><div class="card-icon">⚡</div><h4>Performa</h4><p>Halaman utama harus termuat penuh dalam waktu ≤ 3 detik pada koneksi 4G. Gambar dioptimasi dengan format WebP dan lazy loading untuk meminimalkan ukuran data.</p></div>
+    <div class="card"><div class="card-icon">🔒</div><h4>Keamanan</h4><p>Website menggunakan protokol HTTPS, validasi input pada semua form, proteksi CSRF token, dan sanitasi data sebelum disimpan ke database untuk mencegah SQL Injection dan XSS.</p></div>
+    <div class="card"><div class="card-icon">📱</div><h4>Usability & Responsivitas</h4><p>Antarmuka responsif pada layar berukuran 320px–1920px, dengan navigasi yang dapat diakses oleh pengguna non-teknis tanpa pelatihan khusus.</p></div>
+    <div class="card"><div class="card-icon">🌐</div><h4>Ketersediaan</h4><p>Sistem tersedia 24/7 dengan uptime minimal 99%, menggunakan hosting yang mendukung SSL gratis (Let's Encrypt) dan backup otomatis harian.</p></div>
+  </div>
+
+  <h3>Peran Pengguna (User Role)</h3>
+  <table>
+    <thead><tr><th>Role</th><th>Hak Akses</th><th>Batasan</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><span class="badge badge-red">Admin</span></td>
+        <td>Login dashboard, kelola semua konten (CRUD tiket, camping, pendopo, menu, galeri), kelola reservasi, lihat laporan kunjungan, kirim notifikasi ke pengunjung</td>
+        <td>Hanya bisa diakses melalui halaman admin dengan autentikasi username dan password</td>
+      </tr>
+      <tr>
+        <td><span class="badge badge-green">Pengunjung</span></td>
+        <td>Melihat semua informasi (tiket, camping, pendopo, menu, galeri, peta), mengisi form reservasi, mengirim pesan kontak, membagikan halaman ke media sosial</td>
+        <td>Tidak dapat mengubah konten, tidak dapat mengakses dashboard admin</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</section>
+
+<!-- ===== SOAL 3 ===== -->
+<section class="section" id="soal3">
+<div class="container">
+  <span class="section-label">Bagian B · Soal 3</span>
+  <h2>Konsep & Arsitektur Perangkat Lunak</h2>
+
+  <h3>Nama Aplikasi & Filosofi</h3>
+  <div class="info-box">
+    <h4 style="font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--hijau-tua);">🌄 BukitSenyum.id</h4>
+    <p style="margin-top:8px;"><strong>Filosofi Penamaan:</strong> Nama <em>BukitSenyum</em> dipilih karena secara langsung merepresentasikan identitas wisata yang diangkat. Kata "Bukit" melambangkan keindahan alam perbukitan dan ketinggian pandang, sedangkan "Senyum" merepresentasikan keramahan lokal, kebahagiaan pengunjung, dan suasana hangat yang ditawarkan destinasi ini. Ekstensi <em>.id</em> menegaskan identitas lokal Indonesia dan memudahkan pengunjung mengingat alamat website.</p>
+  </div>
+
+  <h3>Visi & Misi</h3>
+  <div class="card-grid">
+    <div class="card"><div class="card-icon">🎯</div><h4>Visi</h4><p>Menjadi platform digital terpercaya dan mudah digunakan untuk memperkenalkan keindahan Bukit Senyum kepada seluruh masyarakat Indonesia dan wisatawan internasional.</p></div>
+    <div class="card"><div class="card-icon">🚀</div><h4>Misi</h4><p>Menyediakan informasi lengkap, akurat, dan menarik tentang Bukit Senyum; memfasilitasi reservasi online; serta meningkatkan perekonomian lokal melalui teknologi digital.</p></div>
+  </div>
+
+  <h3>Modul / Fitur Utama</h3>
+  <table>
+    <thead><tr><th>Modul</th><th>Fungsi</th><th>Halaman Terkait</th></tr></thead>
+    <tbody>
+      <tr><td>🏠 Modul Beranda</td><td>Halaman utama dengan hero section, ringkasan fasilitas, dan call-to-action untuk reservasi atau kontak</td><td>index.html / /</td></tr>
+      <tr><td>🎫 Modul Tiket & Harga</td><td>Menampilkan tabel tiket per kendaraan, harga camping, dan harga pendopo dalam satu halaman yang terstruktur</td><td>/harga</td></tr>
+      <tr><td>⛺ Modul Reservasi</td><td>Form pemesanan camping dan pendopo dengan integrasi kalender ketersediaan dan konfirmasi via email/WhatsApp</td><td>/reservasi</td></tr>
+      <tr><td>🍽️ Modul Menu</td><td>Daftar lengkap menu makanan dan minuman dari warung Bukit Senyum dengan filter kategori</td><td>/menu</td></tr>
+      <tr><td>🖼️ Modul Galeri</td><td>Kumpulan foto dan video berkualitas tinggi yang dapat difilter berdasarkan kategori suasana, fasilitas, dan kuliner</td><td>/galeri</td></tr>
+      <tr><td>📞 Modul Kontak</td><td>Form pesan, nomor WhatsApp, alamat email, dan peta lokasi interaktif Google Maps</td><td>/kontak</td></tr>
+      <tr><td>🔧 Modul Admin</td><td>Dashboard back-end untuk pengelola: CRUD konten, kelola reservasi, lihat statistik kunjungan</td><td>/admin</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Teknologi yang Direncanakan (Tech Stack)</h3>
+  <div class="card-grid">
+    <div class="card"><div class="card-icon">🌐</div><h4>Front-End: HTML5, CSS3, JavaScript</h4><p>Untuk membangun antarmuka yang responsif dan interaktif. Bootstrap 5 digunakan sebagai framework CSS untuk mempercepat pengembangan dan menjamin responsivitas di semua perangkat.</p></div>
+    <div class="card"><div class="card-icon">⚙️</div><h4>Back-End: PHP 8 (Laravel)</h4><p>Laravel dipilih karena memiliki ekosistem yang kaya, keamanan bawaan (CSRF, SQL Injection protection), dan fitur ORM Eloquent yang memudahkan pengelolaan database.</p></div>
+    <div class="card"><div class="card-icon">🗄️</div><h4>Database: MySQL</h4><p>MySQL digunakan karena stabil, mudah dikelola dengan phpMyAdmin, dan didukung oleh hampir semua hosting terjangkau di Indonesia.</p></div>
+    <div class="card"><div class="card-icon">🚀</div><h4>Hosting: VPS / Shared Hosting</h4><p>Hosting lokal Indonesia (seperti Niagahoster atau IDCloudHost) dipilih untuk menjamin latensi rendah bagi pengunjung dari dalam negeri.</p></div>
+  </div>
+
+  <h3>Alur Kerja Sistem</h3>
+  <div class="info-box">
+    <ol style="margin-left:18px;line-height:2.2;">
+      <li>Pengunjung mengakses <strong>bukitsenyum.id</strong> melalui browser atau tautan media sosial.</li>
+      <li>Halaman beranda menampilkan foto hero, ringkasan fasilitas, dan harga tiket secara singkat.</li>
+      <li>Pengunjung dapat menjelajahi menu navigasi untuk melihat <strong>informasi tiket, camping, pendopo, menu makanan, atau galeri</strong>.</li>
+      <li>Jika tertarik berkunjung, pengunjung mengisi <strong>form reservasi</strong> (pilih tanggal, jenis fasilitas, jumlah orang).</li>
+      <li>Sistem mengirimkan <strong>notifikasi email otomatis</strong> kepada pengunjung dan admin.</li>
+      <li>Admin mengonfirmasi reservasi melalui <strong>dashboard</strong> dan mengirimkan nomor rekening untuk pembayaran DP.</li>
+      <li>Pengunjung mengupload bukti transfer; admin mengonfirmasi dan reservasi selesai.</li>
+    </ol>
+  </div>
+</div>
+</section>
+
+<!-- ===== SOAL 4 ===== -->
+<section class="section" id="soal4">
+<div class="container">
+  <span class="section-label">Bagian C · Soal 4</span>
+  <h2>Use Case Diagram</h2>
+
+  <!-- ====== STEP WIZARD USE CASE ====== -->
+  <style>
+    .uc-wizard{background:#fff;border-radius:20px;box-shadow:0 4px 24px rgba(0,0,0,.08);overflow:hidden;margin:24px 0 36px;}
+
+    /* STEPPER BAR */
+    .uc-steps{display:flex;border-bottom:1px solid #e8e0d4;background:#f9f6ef;}
+    .uc-step-btn{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;padding:14px 8px;cursor:pointer;border:none;background:transparent;border-bottom:3px solid transparent;transition:all .2s;font-family:'Lato',sans-serif;}
+    .uc-step-btn .step-num{font-size:.68rem;color:#aaa;letter-spacing:.5px;}
+    .uc-step-btn .step-icon{font-size:1.3rem;}
+    .uc-step-btn .step-name{font-size:.72rem;font-weight:700;color:#888;}
+    .uc-step-btn.active{background:#fff;border-bottom:3px solid var(--hijau);} 
+    .uc-step-btn.active .step-name{color:var(--hijau);}
+    .uc-step-btn.active .step-num{color:var(--hijau-muda);}
+    .uc-step-btn.done .step-num{color:var(--hijau-muda);}
+    .uc-step-btn.done .step-name{color:var(--hijau-muda);}
+
+    /* PANELS */
+    .uc-panels{padding:32px 28px;}
+    .uc-panel{display:none;}
+    .uc-panel.active{display:block;}
+
+    .uc-panel-title{display:flex;align-items:center;gap:14px;margin-bottom:6px;}
+    .uc-panel-title .pt-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0;}
+    .uc-panel-title h3{font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--hijau-tua);margin:0;}
+    .uc-panel-title p{font-size:.88rem;color:#888;margin:4px 0 0;}
+
+    /* AKTOR CARDS */
+    .aktor-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:24px;}
+    @media(max-width:600px){.aktor-grid{grid-template-columns:1fr;}}
+    .aktor-card{border-radius:14px;padding:20px;display:flex;align-items:flex-start;gap:14px;border:2px solid #e8e0d4;}
+    .aktor-card.pengunjung{border-color:#2d6a4f;}
+    .aktor-card.admin{border-color:#7c4dbd;}
+    .aktor-card.eksternal{border-color:#f4a261;}
+    .aktor-fig{width:80px;height:80px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:2.2rem;flex-shrink:0;background:#f0ebe3;}
+    .aktor-fig.bg-hijau{background:#e8f5e9;}
+    .aktor-fig.bg-ungu{background:#ede7f6;}
+    .aktor-fig.bg-kuning{background:#fff8e1;}
+    .aktor-badge{display:inline-block;padding:3px 10px;border-radius:20px;font-size:.72rem;font-weight:700;margin-top:4px;}
+    .badge-primary{background:#e8f5e9;color:#2d6a4f;}
+    .badge-secondary{background:#ede7f6;color:#7c4dbd;}
+    .badge-external{background:#fff3cd;color:#856404;}
+    .aktor-info h4{margin:0 0 4px;font-size:1rem;color:var(--hijau-tua);}
+    .aktor-info p{font-size:.82rem;color:#666;margin-top:6px;line-height:1.6;}
+
+    /* USE CASE CHIPS */
+    .uc-actor-block{margin-top:22px;}
+    .uc-actor-label{display:flex;align-items:center;gap:8px;margin-bottom:10px;}
+    .uc-actor-label span{font-size:.75rem;font-weight:700;color:#888;letter-spacing:.5px;text-transform:uppercase;}
+    .uc-actor-dot{width:10px;height:10px;border-radius:50%;}
+    .dot-hijau{background:var(--hijau);}
+    .dot-ungu{background:#7c4dbd;}
+    .dot-kuning{background:var(--kuning);}
+    .dot-coklat{background:var(--coklat);}
+    .chip-wrap{display:flex;flex-wrap:wrap;gap:8px;}
+    .uc-chip{padding:7px 14px;border-radius:30px;font-size:.8rem;font-weight:600;border:1.5px solid transparent;}
+    .chip-hijau{background:#e8f5e9;color:#1a3d2b;border-color:#52b788;}
+    .chip-ungu{background:#ede7f6;color:#4a1a8c;border-color:#9c6fc4;}
+    .chip-kuning{background:#fff3cd;color:#856404;border-color:#f4a261;}
+
+    /* HUBUNGAN CARDS */
+    .hub-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:22px;}
+    @media(max-width:640px){.hub-grid{grid-template-columns:1fr;}}
+    .hub-card{border-radius:14px;padding:18px;border:2px solid #e8e0d4;}
+    .hub-card h4{font-size:.9rem;font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:6px;}
+    .hub-item{display:flex;align-items:center;gap:6px;font-size:.82rem;margin-bottom:8px;color:#444;}
+    .hub-item .hline{flex:1;height:1.5px;background:#ccc;}
+    .hub-item .hkw{font-weight:700;}
+    .hub-item .hkw.inc{color:#e57c00;}
+    .hub-item .hkw.ext{color:#7c4dbd;}
+
+    /* TIP BOX */
+    .uc-tip{background:#fffde7;border-left:4px solid var(--kuning);border-radius:0 10px 10px 0;padding:14px 18px;margin-top:22px;font-size:.84rem;line-height:1.8;}
+    .uc-tip strong{color:var(--coklat);}
+
+    /* NAV BUTTONS */
+    .uc-nav{display:flex;justify-content:space-between;margin-top:28px;}
+    .uc-btn{padding:10px 24px;border-radius:40px;border:none;cursor:pointer;font-family:'Lato',sans-serif;font-size:.88rem;font-weight:700;transition:all .2s;}
+    .uc-btn-back{background:#f0ebe3;color:#555;}
+    .uc-btn-back:hover{background:#e0d9cc;}
+    .uc-btn-next{background:var(--hijau);color:#fff;}
+    .uc-btn-next:hover{background:var(--hijau-tua);}
+    .uc-btn:disabled{opacity:.3;cursor:not-allowed;}
+  </style>
+
+  <div class="uc-wizard">
+    <!-- STEP BAR -->
+    <div class="uc-steps">
+      <button class="uc-step-btn active" onclick="ucGoTo(0)" id="ucbtn0">
+        <span class="step-num">Step 1</span>
+        <span class="step-icon">📋</span>
+        <span class="step-name">Deskripsi</span>
+      </button>
+      <button class="uc-step-btn" onclick="ucGoTo(1)" id="ucbtn1">
+        <span class="step-num">Step 2</span>
+        <span class="step-icon">👤</span>
+        <span class="step-name">Aktor</span>
+      </button>
+      <button class="uc-step-btn" onclick="ucGoTo(2)" id="ucbtn2">
+        <span class="step-num">Step 3</span>
+        <span class="step-icon">⚡</span>
+        <span class="step-name">Use Case</span>
+      </button>
+      <button class="uc-step-btn" onclick="ucGoTo(3)" id="ucbtn3">
+        <span class="step-num">Step 4</span>
+        <span class="step-icon">🔗</span>
+        <span class="step-name">Hubungan</span>
+      </button>
+      <button class="uc-step-btn" onclick="ucGoTo(4)" id="ucbtn4">
+        <span class="step-num">Step 5</span>
+        <span class="step-icon">📐</span>
+        <span class="step-name">Diagram</span>
+      </button>
+    </div>
+
+    <div class="uc-panels">
+
+      <!-- ── STEP 1: DESKRIPSI ── -->
+      <div class="uc-panel active" id="ucpanel0">
+        <div class="uc-panel-title">
+          <div class="pt-icon" style="background:#e8f5e9;">📋</div>
+          <div>
+            <h3>Deskripsi Sistem</h3>
+            <p>Apa yang dibangun dan untuk apa?</p>
+          </div>
+        </div>
+        <div class="info-box" style="margin-top:20px;">
+          <strong>🌄 BukitSenyum.id — Sistem Informasi Wisata Alam Digital</strong>
+          <p style="margin-top:8px;line-height:1.8;">Sebuah platform web yang memungkinkan pengunjung mencari informasi lengkap tentang Wisata Bukit Senyum, melakukan reservasi camping/pendopo secara online, melihat menu warung, dan menghubungi pengelola. Admin dapat mengelola seluruh konten, memverifikasi reservasi, dan memantau kunjungan melalui dashboard.</p>
+        </div>
+        <div class="card-grid" style="margin-top:16px;">
+          <div class="card"><div class="card-icon">🎯</div><h4>Tujuan Sistem</h4><p>Digitalisasi layanan wisata Bukit Senyum agar informasi, reservasi, dan promosi dapat diakses 24/7 dari mana saja.</p></div>
+          <div class="card"><div class="card-icon">👥</div><h4>Pengguna Utama</h4><p>Pengunjung (wisatawan lokal maupun luar daerah) dan Admin pengelola wisata Bukit Senyum, Desa Motung, Kab. Toba.</p></div>
+          <div class="card"><div class="card-icon">🌐</div><h4>Ruang Lingkup</h4><p>Informasi tiket & fasilitas, reservasi online, galeri foto, menu makanan, form kontak, dan dashboard pengelolaan admin.</p></div>
+        </div>
+        <div class="uc-nav">
+          <button class="uc-btn uc-btn-back" disabled>← Kembali</button>
+          <button class="uc-btn uc-btn-next" onclick="ucGoTo(1)">Selanjutnya →</button>
+        </div>
+      </div>
+
+      <!-- ── STEP 2: AKTOR ── -->
+      <div class="uc-panel" id="ucpanel1">
+        <div class="uc-panel-title">
+          <div class="pt-icon" style="background:#e8f5e9;">👤</div>
+          <div>
+            <h3>Identifikasi Aktor</h3>
+            <p>Siapa saja yang berinteraksi dengan sistem BukitSenyum.id?</p>
+          </div>
+        </div>
+        <div class="aktor-grid">
+          <div class="aktor-card pengunjung">
+            <div class="aktor-fig bg-hijau">🏕️</div>
+            <div class="aktor-info">
+              <h4>Pengunjung</h4>
+              <span class="aktor-badge badge-primary">Primary Actor</span>
+              <p>Wisatawan atau calon pengunjung yang mengakses website untuk melihat informasi, membuat reservasi, dan menghubungi pengelola. Aktor utama dengan interaksi terbanyak.</p>
+            </div>
+          </div>
+          <div class="aktor-card admin">
+            <div class="aktor-fig bg-ungu">🛡️</div>
+            <div class="aktor-info">
+              <h4>Admin Pengelola</h4>
+              <span class="aktor-badge badge-secondary">Secondary Actor</span>
+              <p>Pengelola wisata Bukit Senyum yang login ke dashboard untuk mengelola konten, memverifikasi reservasi, dan memantau statistik kunjungan.</p>
+            </div>
+          </div>
+        </div>
+        <div class="uc-nav">
+          <button class="uc-btn uc-btn-back" onclick="ucGoTo(0)">← Kembali</button>
+          <button class="uc-btn uc-btn-next" onclick="ucGoTo(2)">Selanjutnya →</button>
+        </div>
+      </div>
+
+      <!-- ── STEP 3: USE CASE ── -->
+      <div class="uc-panel" id="ucpanel2">
+        <div class="uc-panel-title">
+          <div class="pt-icon" style="background:#fff8e1;">⚡</div>
+          <div>
+            <h3>Identifikasi Use Case</h3>
+            <p>Fungsionalitas apa saja yang disediakan sistem untuk masing-masing aktor?</p>
+          </div>
+        </div>
+
+        <div class="uc-actor-block">
+          <div class="uc-actor-label">
+            <div class="uc-actor-dot dot-hijau"></div>
+            <span>Use Case: Pengunjung</span>
+          </div>
+          <div class="chip-wrap">
+            <span class="uc-chip chip-hijau">Melihat Info Tiket &amp; Harga</span>
+            <span class="uc-chip chip-hijau">Melihat Info Camping</span>
+            <span class="uc-chip chip-hijau">Melakukan Reservasi</span>
+            <span class="uc-chip chip-hijau">Konfirmasi Pembayaran</span>
+            <span class="uc-chip chip-hijau">Melihat Menu Makanan</span>
+            <span class="uc-chip chip-hijau">Melihat Galeri Foto</span>
+            <span class="uc-chip chip-hijau">Mengirim Pesan Kontak</span>
+          </div>
+        </div>
+
+        <div class="uc-actor-block">
+          <div class="uc-actor-label">
+            <div class="uc-actor-dot dot-ungu"></div>
+            <span>Use Case: Admin Pengelola</span>
+          </div>
+          <div class="chip-wrap">
+            <span class="uc-chip chip-ungu">Login Dashboard</span>
+            <span class="uc-chip chip-ungu" style="background:#fce4ec;color:#c62828;border:1px solid #e53935;">Validasi Akun Admin <em style="font-size:.75em;">«include»</em></span>
+            <span class="uc-chip chip-ungu">Kelola Konten Website</span>
+            <span class="uc-chip chip-ungu">Kelola Reservasi</span>
+            <span class="uc-chip chip-ungu" style="background:#ede7f6;color:#4a148c;border:1px solid #673ab7;">Lihat Statistik Kunjungan <em style="font-size:.75em;">«extend»</em></span>
+            <span class="uc-chip chip-ungu">Kirim Notifikasi</span>
+          </div>
+        </div>
+
+        <div class="uc-tip">
+          💡 <strong>Format Penamaan Use Case:</strong> Selalu gunakan <strong>kata kerja aktif + objek</strong>.
+          Contoh: ✅ "Melakukan Reservasi" bukan ❌ "Reservasi" atau ❌ "Form Pemesanan".
+        </div>
+        <div class="uc-nav">
+          <button class="uc-btn uc-btn-back" onclick="ucGoTo(1)">← Kembali</button>
+          <button class="uc-btn uc-btn-next" onclick="ucGoTo(3)">Selanjutnya →</button>
+        </div>
+      </div>
+
+      <!-- ── STEP 4: HUBUNGAN ── -->
+      <div class="uc-panel" id="ucpanel3">
+        <div class="uc-panel-title">
+          <div class="pt-icon" style="background:#fce4ec;">🔗</div>
+          <div>
+            <h3>Hubungan Aktor &amp; Use Case</h3>
+            <p>Koneksi dan relasi antar elemen diagram</p>
+          </div>
+        </div>
+
+        <div class="hub-grid">
+          <div class="hub-card" style="border-color:#2d6a4f;">
+            <h4 style="color:#2d6a4f;">🔗 Association (Asosiasi)</h4>
+            <div class="hub-item"><span>Pengunjung</span><span class="hline"></span><span>Melakukan Reservasi</span></div>
+            <div class="hub-item"><span>Pengunjung</span><span class="hline"></span><span>Melihat Info Tiket</span></div>
+            <div class="hub-item"><span>Admin</span><span class="hline"></span><span>Kelola Reservasi</span></div>
+            <div class="hub-item"><span>Admin</span><span class="hline"></span><span>Kelola Konten</span></div>
+          </div>
+          <div class="hub-card" style="border-color:#e57c00;">
+            <h4 style="color:#e57c00;">↪ «include» (Wajib)</h4>
+            <div style="font-size:.82rem;color:#555;line-height:2;">
+              <div><span class="hkw inc">Melakukan Reservasi</span></div>
+              <div style="padding-left:12px;color:#aaa;">↪ include <span style="color:#e57c00;font-weight:600;">Konfirmasi Pembayaran</span></div>
+              <br>
+              <div><span class="hkw inc">Login Dashboard</span></div>
+              <div style="padding-left:12px;color:#aaa;">↪ include <span style="color:#e57c00;font-weight:600;">Validasi Akun Admin</span></div>
+            </div>
+          </div>
+          <div class="hub-card" style="border-color:#7c4dbd;">
+            <h4 style="color:#7c4dbd;">↗ «extend» (Opsional)</h4>
+            <div style="font-size:.82rem;color:#555;line-height:2;">
+              <div><span class="hkw ext">Lihat Statistik Kunjungan</span></div>
+              <div style="padding-left:12px;color:#aaa;">↗ extend <span style="color:#7c4dbd;font-weight:600;">Kelola Reservasi</span></div>
+              <br>
+              <div><span class="hkw ext">Mengirim Pesan Kontak</span></div>
+              <div style="padding-left:12px;color:#aaa;">↗ extend <span style="color:#7c4dbd;font-weight:600;">Melihat Galeri Foto</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="uc-tip">
+          💡 <strong>Include vs Extend:</strong><br>
+          <strong>«include»</strong>: UC B <em>selalu</em> dipanggil saat UC A dijalankan. "Melakukan Reservasi" <em>selalu</em> butuh Konfirmasi Pembayaran.<br>
+          <strong>«extend»</strong>: UC B hanya dipanggil <em>jika kondisi terpenuhi</em>. Statistik <em>tidak selalu</em> dilihat saat kelola reservasi.
+        </div>
+        <div class="uc-nav">
+          <button class="uc-btn uc-btn-back" onclick="ucGoTo(2)">← Kembali</button>
+          <button class="uc-btn uc-btn-next" onclick="ucGoTo(4)">Lihat Diagram →</button>
+        </div>
+      </div>
+
+      <!-- ── STEP 5: DIAGRAM ── -->
+      <div class="uc-panel" id="ucpanel4">
+        <div class="uc-panel-title">
+          <div class="pt-icon" style="background:#f0ebe3;">📐</div>
+          <div>
+            <h3>Hasil Use Case Diagram</h3>
+            <p>BukitSenyum.id — Sistem Informasi Wisata Alam</p>
+          </div>
+        </div>
+        <p style="margin-top:12px;font-size:.88rem;color:#666;">Diagram lengkap telah digambar di bawah ini. Scroll ke bawah untuk melihat tabel deskripsi use case.</p>
+        <div class="uc-nav" style="margin-top:16px;">
+          <button class="uc-btn uc-btn-back" onclick="ucGoTo(3)">← Kembali</button>
+          <button class="uc-btn uc-btn-next" onclick="document.querySelector('.uml-wrap').scrollIntoView({behavior:'smooth'})">Lihat Diagram ↓</button>
+        </div>
+      </div>
+
+    </div><!-- /uc-panels -->
+  </div><!-- /uc-wizard -->
+
+  <script>
+    function ucGoTo(idx){
+      const total = 5;
+      for(let i=0;i<total;i++){
+        document.getElementById('ucpanel'+i).classList.toggle('active', i===idx);
+        const btn = document.getElementById('ucbtn'+i);
+        btn.classList.remove('active','done');
+        if(i===idx) btn.classList.add('active');
+        else if(i<idx) btn.classList.add('done');
+      }
+    }
+  </script>
+  <!-- ====== END STEP WIZARD ====== -->
+
+  <div class="uml-wrap">
+    <svg viewBox="0 0 920 740" xmlns="http://www.w3.org/2000/svg" font-family="Lato,sans-serif">
+      <!-- Background -->
+      <rect width="920" height="740" fill="#fafafa" rx="12"/>
+
+      <!-- Title -->
+      <text x="460" y="30" text-anchor="middle" font-size="14" font-weight="700" fill="#1a3d2b">Use Case Diagram — Sistem Informasi Wisata Bukit Senyum</text>
+
+      <!-- System Boundary -->
+      <rect x="165" y="48" width="585" height="672" fill="none" stroke="#2d6a4f" stroke-width="2" stroke-dasharray="8,4" rx="12"/>
+      <text x="457" y="68" text-anchor="middle" font-size="11" fill="#2d6a4f" font-weight="600">«system» BukitSenyum.id</text>
+
+      <!-- ── LEGEND ── -->
+      <rect x="640" y="610" width="155" height="100" rx="8" fill="#fff" stroke="#ccc" stroke-width="1"/>
+      <text x="718" y="625" text-anchor="middle" font-size="9" font-weight="700" fill="#333">LEGENDA</text>
+      <line x1="652" y1="638" x2="685" y2="638" stroke="#e53935" stroke-width="1.5" stroke-dasharray="4,2"/>
+      <path d="M682,635 L682,641 L688,638 z" fill="#e53935"/>
+      <text x="693" y="641" font-size="8" fill="#333">«include» (wajib)</text>
+      <line x1="652" y1="656" x2="685" y2="656" stroke="#673ab7" stroke-width="1.5" stroke-dasharray="4,2"/>
+      <path d="M682,653 L682,659 L688,656 z" fill="#673ab7"/>
+      <text x="693" y="659" font-size="8" fill="#333">«extend» (opsional)</text>
+      <line x1="652" y1="674" x2="688" y2="674" stroke="#555" stroke-width="1.2"/>
+      <text x="693" y="677" font-size="8" fill="#333">asosiasi aktor</text>
+      <rect x="652" y="684" width="14" height="10" rx="3" fill="#fff3cd" stroke="#f4a261" stroke-width="1"/>
+      <text x="693" y="693" font-size="8" fill="#333">UC dengan include/extend</text>
+
+      <!-- ── ACTOR: Pengunjung ── -->
+      <circle cx="75" cy="290" r="18" fill="none" stroke="#1a3d2b" stroke-width="2"/>
+      <line x1="75" y1="308" x2="75" y2="363" stroke="#1a3d2b" stroke-width="2"/>
+      <line x1="46" y1="330" x2="104" y2="330" stroke="#1a3d2b" stroke-width="2"/>
+      <line x1="75" y1="363" x2="50" y2="398" stroke="#1a3d2b" stroke-width="2"/>
+      <line x1="75" y1="363" x2="100" y2="398" stroke="#1a3d2b" stroke-width="2"/>
+      <text x="75" y="416" text-anchor="middle" font-size="12" font-weight="700" fill="#1a3d2b">Pengunjung</text>
+
+      <!-- ── ACTOR: Admin ── -->
+      <circle cx="865" cy="290" r="18" fill="none" stroke="#774936" stroke-width="2"/>
+      <line x1="865" y1="308" x2="865" y2="363" stroke="#774936" stroke-width="2"/>
+      <line x1="836" y1="330" x2="894" y2="330" stroke="#774936" stroke-width="2"/>
+      <line x1="865" y1="363" x2="840" y2="398" stroke="#774936" stroke-width="2"/>
+      <line x1="865" y1="363" x2="890" y2="398" stroke="#774936" stroke-width="2"/>
+      <text x="865" y="416" text-anchor="middle" font-size="12" font-weight="700" fill="#774936">Admin</text>
+
+      <!-- ====== KOLOM KIRI: PENGUNJUNG USE CASES ====== -->
+      <!-- UC1: Melihat Info Tiket & Harga -->
+      <ellipse cx="310" cy="100" rx="118" ry="24" fill="#e8f5e9" stroke="#2d6a4f" stroke-width="1.5"/>
+      <text x="310" y="104" text-anchor="middle" font-size="10" fill="#1a3d2b" font-weight="600">Melihat Info Tiket &amp; Harga</text>
+
+      <!-- UC2: Melihat Info Camping -->
+      <ellipse cx="310" cy="165" rx="118" ry="24" fill="#e8f5e9" stroke="#2d6a4f" stroke-width="1.5"/>
+      <text x="310" y="169" text-anchor="middle" font-size="10" fill="#1a3d2b" font-weight="600">Melihat Info Camping</text>
+
+      <!-- UC3: Melakukan Reservasi -->
+      <ellipse cx="310" cy="240" rx="118" ry="24" fill="#fff3cd" stroke="#f4a261" stroke-width="1.8"/>
+      <text x="310" y="244" text-anchor="middle" font-size="10" fill="#1a3d2b" font-weight="600">Melakukan Reservasi</text>
+
+      <!-- UC4: Konfirmasi Pembayaran «include» -->
+      <ellipse cx="310" cy="320" rx="118" ry="24" fill="#fce4ec" stroke="#e53935" stroke-width="1.5"/>
+      <text x="310" y="316" text-anchor="middle" font-size="10" fill="#1a3d2b" font-weight="600">Konfirmasi Pembayaran</text>
+      <text x="310" y="330" text-anchor="middle" font-size="8.5" fill="#c62828" font-style="italic">«include»</text>
+
+      <!-- UC5: Melihat Menu Makanan -->
+      <ellipse cx="310" cy="400" rx="118" ry="24" fill="#e8f5e9" stroke="#2d6a4f" stroke-width="1.5"/>
+      <text x="310" y="404" text-anchor="middle" font-size="10" fill="#1a3d2b" font-weight="600">Melihat Menu Makanan</text>
+
+      <!-- UC6: Melihat Galeri Foto -->
+      <ellipse cx="310" cy="475" rx="118" ry="24" fill="#e8f5e9" stroke="#2d6a4f" stroke-width="1.5"/>
+      <text x="310" y="479" text-anchor="middle" font-size="10" fill="#1a3d2b" font-weight="600">Melihat Galeri Foto</text>
+
+      <!-- UC7: Mengirim Pesan Kontak «extend» -->
+      <ellipse cx="310" cy="555" rx="118" ry="24" fill="#ede7f6" stroke="#673ab7" stroke-width="1.5"/>
+      <text x="310" y="551" text-anchor="middle" font-size="10" fill="#1a3d2b" font-weight="600">Mengirim Pesan Kontak</text>
+      <text x="310" y="565" text-anchor="middle" font-size="8.5" fill="#673ab7" font-style="italic">«extend»</text>
+
+      <!-- ====== KOLOM KANAN: ADMIN USE CASES ====== -->
+      <!-- UC8: Login Dashboard -->
+      <ellipse cx="610" cy="100" rx="118" ry="24" fill="#fff3cd" stroke="#f4a261" stroke-width="1.8"/>
+      <text x="610" y="104" text-anchor="middle" font-size="10" fill="#1a3d2b" font-weight="600">Login Dashboard</text>
+
+      <!-- UC9: Validasi Akun Admin «include» -->
+      <ellipse cx="610" cy="175" rx="118" ry="24" fill="#fce4ec" stroke="#e53935" stroke-width="1.5"/>
+      <text x="610" y="171" text-anchor="middle" font-size="10" fill="#1a3d2b" font-weight="600">Validasi Akun Admin</text>
+      <text x="610" y="185" text-anchor="middle" font-size="8.5" fill="#c62828" font-style="italic">«include»</text>
+
+      <!-- UC10: Kelola Konten Website -->
+      <ellipse cx="610" cy="265" rx="118" ry="24" fill="#fce4ec" stroke="#774936" stroke-width="1.5"/>
+      <text x="610" y="269" text-anchor="middle" font-size="10" fill="#1a3d2b" font-weight="600">Kelola Konten Website</text>
+
+      <!-- UC11: Kelola Reservasi -->
+      <ellipse cx="610" cy="355" rx="118" ry="24" fill="#fce4ec" stroke="#774936" stroke-width="1.5"/>
+      <text x="610" y="359" text-anchor="middle" font-size="10" fill="#1a3d2b" font-weight="600">Kelola Reservasi</text>
+
+      <!-- UC12: Lihat Statistik Kunjungan «extend» -->
+      <ellipse cx="610" cy="445" rx="118" ry="24" fill="#ede7f6" stroke="#673ab7" stroke-width="1.5"/>
+      <text x="610" y="441" text-anchor="middle" font-size="10" fill="#1a3d2b" font-weight="600">Lihat Statistik Kunjungan</text>
+      <text x="610" y="455" text-anchor="middle" font-size="8.5" fill="#673ab7" font-style="italic">«extend»</text>
+
+      <!-- UC13: Kirim Notifikasi -->
+      <ellipse cx="610" cy="530" rx="118" ry="24" fill="#fce4ec" stroke="#774936" stroke-width="1.5"/>
+      <text x="610" y="534" text-anchor="middle" font-size="10" fill="#1a3d2b" font-weight="600">Kirim Notifikasi</text>
+
+      <!-- ====== GARIS ASOSIASI: Pengunjung → UC ====== -->
+      <line x1="133" y1="282" x2="192" y2="105" stroke="#555" stroke-width="1.2"/>
+      <line x1="133" y1="292" x2="192" y2="168" stroke="#555" stroke-width="1.2"/>
+      <line x1="133" y1="305" x2="192" y2="243" stroke="#555" stroke-width="1.2"/>
+      <line x1="130" y1="318" x2="192" y2="403" stroke="#555" stroke-width="1.2"/>
+      <line x1="125" y1="330" x2="192" y2="477" stroke="#555" stroke-width="1.2"/>
+      <line x1="120" y1="345" x2="192" y2="557" stroke="#555" stroke-width="1.2"/>
+
+      <!-- ====== GARIS ASOSIASI: Admin → UC ====== -->
+      <line x1="800" y1="275" x2="728" y2="104" stroke="#555" stroke-width="1.2"/>
+      <line x1="800" y1="290" x2="728" y2="268" stroke="#555" stroke-width="1.2"/>
+      <line x1="800" y1="305" x2="728" y2="358" stroke="#555" stroke-width="1.2"/>
+      <line x1="800" y1="318" x2="728" y2="447" stroke="#555" stroke-width="1.2"/>
+      <line x1="800" y1="332" x2="728" y2="533" stroke="#555" stroke-width="1.2"/>
+
+      <!-- ====== INCLUDE / EXTEND LINES ====== -->
+      <!-- «include»: Melakukan Reservasi → Konfirmasi Pembayaran -->
+      <line x1="310" y1="264" x2="310" y2="296" stroke="#e53935" stroke-width="1.5" stroke-dasharray="6,3" marker-end="url(#arr-red)"/>
+      <text x="318" y="284" font-size="8.5" fill="#e53935" font-style="italic">«include»</text>
+
+      <!-- «include»: Login Dashboard → Validasi Akun Admin -->
+      <line x1="610" y1="124" x2="610" y2="151" stroke="#e53935" stroke-width="1.5" stroke-dasharray="6,3" marker-end="url(#arr-red)"/>
+      <text x="618" y="142" font-size="8.5" fill="#e53935" font-style="italic">«include»</text>
+
+      <!-- «extend»: Lihat Statistik Kunjungan → Kelola Reservasi -->
+      <line x1="610" y1="421" x2="610" y2="379" stroke="#673ab7" stroke-width="1.5" stroke-dasharray="6,3" marker-end="url(#arr-purple)"/>
+      <text x="618" y="405" font-size="8.5" fill="#673ab7" font-style="italic">«extend»</text>
+
+      <!-- «extend»: Mengirim Pesan Kontak → Melihat Galeri Foto -->
+      <line x1="310" y1="531" x2="310" y2="499" stroke="#673ab7" stroke-width="1.5" stroke-dasharray="6,3" marker-end="url(#arr-purple)"/>
+      <text x="318" y="519" font-size="8.5" fill="#673ab7" font-style="italic">«extend»</text>
+
+      <!-- ── Arrow marker defs ── -->
+      <defs>
+        <marker id="arr-red" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#e53935"/>
+        </marker>
+        <marker id="arr-purple" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#673ab7"/>
+        </marker>
+      </defs>
+    </svg>
+  </div>
+
+  <h3>Tabel Deskripsi Use Case</h3>
+  <table>
+    <thead><tr><th>Nama Use Case</th><th>Aktor</th><th>Deskripsi</th><th>Pra-kondisi</th><th>Pasca-kondisi</th></tr></thead>
+    <tbody>
+      <tr><td>Melihat Info Tiket & Harga</td><td>Pengunjung, Admin</td><td>Pengguna melihat tabel harga tiket masuk per kendaraan, harga camping, dan pendopo</td><td>Website dapat diakses; koneksi internet tersedia</td><td>Informasi harga ditampilkan lengkap di halaman</td></tr>
+      <tr><td>Melihat Info Camping</td><td>Pengunjung, Admin</td><td>Pengguna melihat paket camping, fasilitas, harga, dan kapasitas yang tersedia</td><td>Website dapat diakses</td><td>Detail paket camping ditampilkan</td></tr>
+      <tr><td>Melakukan Reservasi</td><td>Pengunjung</td><td>Pengunjung mengisi form reservasi camping/pendopo dengan tanggal dan jumlah tamu</td><td>Pengunjung membuka halaman reservasi; formulir tersedia</td><td>Data reservasi tersimpan; notifikasi email terkirim ke pengunjung dan admin</td></tr>
+      <tr><td>Melihat Menu Makanan</td><td>Pengunjung, Admin</td><td>Pengguna melihat daftar menu makanan dan minuman beserta harga</td><td>Website dapat diakses</td><td>Daftar menu tampil dengan filter kategori aktif</td></tr>
+      <tr><td>Melihat Galeri Foto</td><td>Pengunjung</td><td>Pengunjung melihat koleksi foto dan video suasana Bukit Senyum</td><td>Website dapat diakses; gambar sudah diunggah admin</td><td>Galeri foto tampil dan dapat diperbesar (lightbox)</td></tr>
+      <tr><td>Mengirim Pesan Kontak</td><td>Pengunjung</td><td>Pengunjung mengirimkan pertanyaan atau pesan melalui form kontak</td><td>Form kontak diisi lengkap (nama, email, pesan)</td><td>Pesan terkirim ke email admin; muncul notifikasi sukses</td></tr>
+      <tr><td>Konfirmasi Pembayaran</td><td>Pengunjung</td><td>Pengunjung mengupload bukti transfer DP sebagai konfirmasi reservasi (include dari Reservasi)</td><td>Reservasi sudah diisi; nomor rekening sudah diberikan admin</td><td>Bukti tersimpan; status reservasi berubah menjadi "Pending Konfirmasi"</td></tr>
+      <tr><td>Kelola Konten Website</td><td>Admin</td><td>Admin menambah, mengubah, atau menghapus informasi tiket, menu, galeri, dan fasilitas</td><td>Admin sudah login ke dashboard</td><td>Konten diperbarui dan langsung tampil di website</td></tr>
+      <tr><td>Kelola Reservasi</td><td>Admin</td><td>Admin melihat daftar reservasi masuk, mengonfirmasi atau menolak, serta mengubah status pembayaran</td><td>Admin sudah login; terdapat reservasi baru masuk</td><td>Status reservasi diperbarui; notifikasi terkirim ke pengunjung</td></tr>
+      <tr><td>Lihat Statistik Kunjungan</td><td>Admin</td><td>Admin melihat laporan jumlah kunjungan harian/bulanan dan pendapatan — extend dari Kelola Reservasi (hanya muncul jika admin memilih fitur statistik)</td><td>Admin sudah login; data reservasi tersedia</td><td>Dashboard statistik ditampilkan dalam bentuk grafik</td></tr>
+      <tr><td>Login Dashboard</td><td>Admin</td><td>Admin memasukkan kredensial (username &amp; password) untuk mengakses halaman dashboard pengelolaan sistem</td><td>Admin memiliki akun terdaftar di sistem</td><td>Admin berhasil masuk ke dashboard atau muncul pesan error jika kredensial salah</td></tr>
+      <tr><td>Validasi Akun Admin</td><td>Sistem (include dari Login Dashboard)</td><td>Sistem secara otomatis memverifikasi kredensial admin setiap kali proses Login Dashboard dijalankan</td><td>Admin telah mengisi form login dan menekan tombol masuk</td><td>Sesi admin dimulai jika valid; akses ditolak dan pesan error ditampilkan jika tidak valid</td></tr>
+      <tr><td>Kirim Notifikasi</td><td>Admin</td><td>Admin mengirimkan notifikasi kepada pengunjung terkait status konfirmasi reservasi atau informasi terbaru wisata Bukit Senyum</td><td>Admin sudah login; terdapat reservasi yang perlu dikonfirmasi atau informasi yang perlu dikomunikasikan</td><td>Notifikasi berhasil terkirim ke email atau WhatsApp pengunjung yang dituju</td></tr>
+    </tbody>
+  </table>
+</div>
+</section>
+
+<!-- ===== SOAL 5 ===== -->
+<section class="section" id="soal5">
+<div class="container">
+  <span class="section-label">Bagian C · Soal 5</span>
+  <h2>Activity Diagram</h2>
+  <p>Alur yang dipilih: <strong>Pengunjung melakukan reservasi camping/pendopo di Bukit Senyum</strong></p>
+
+  <div class="uml-wrap">
+    <svg viewBox="0 0 660 780" xmlns="http://www.w3.org/2000/svg" font-family="Lato,sans-serif">
+      <rect width="660" height="780" fill="#fafafa" rx="12"/>
+      <text x="330" y="32" text-anchor="middle" font-size="13" font-weight="700" fill="#1a3d2b">Activity Diagram — Alur Reservasi Pengunjung</text>
+
+      <!-- Swimlane labels -->
+      <rect x="20" y="50" width="295" height="700" fill="#e8f5e9" rx="8" opacity="0.5"/>
+      <rect x="325" y="50" width="315" height="700" fill="#fff8e1" rx="8" opacity="0.5"/>
+      <text x="165" y="72" text-anchor="middle" font-size="11" font-weight="700" fill="#2d6a4f">Pengunjung</text>
+      <text x="485" y="72" text-anchor="middle" font-size="11" font-weight="700" fill="#774936">Sistem / Admin</text>
+
+      <!-- Helper: arrow defs -->
+      <defs>
+        <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#333"/>
+        </marker>
+      </defs>
+
+      <!-- 1. Initial Node -->
+      <circle cx="165" cy="105" r="12" fill="#1a3d2b"/>
+      <line x1="165" y1="117" x2="165" y2="140" stroke="#333" stroke-width="1.5" marker-end="url(#arr)"/>
+
+      <!-- 2. Buka website -->
+      <rect x="80" y="140" width="170" height="36" rx="18" fill="#2d6a4f" stroke="none"/>
+      <text x="165" y="163" text-anchor="middle" font-size="10.5" fill="#fff" font-weight="600">Buka Website Bukit Senyum</text>
+      <line x1="165" y1="176" x2="165" y2="202" stroke="#333" stroke-width="1.5" marker-end="url(#arr)"/>
+
+      <!-- 3. Pilih menu reservasi -->
+      <rect x="80" y="202" width="170" height="36" rx="18" fill="#2d6a4f"/>
+      <text x="165" y="225" text-anchor="middle" font-size="10.5" fill="#fff" font-weight="600">Pilih Menu Reservasi</text>
+      <line x1="165" y1="238" x2="165" y2="265" stroke="#333" stroke-width="1.5" marker-end="url(#arr)"/>
+
+      <!-- FORK -->
+      <rect x="80" y="265" width="170" height="8" rx="4" fill="#333"/>
+      <!-- Fork kiri: lihat kalender -->
+      <line x1="115" y1="273" x2="115" y2="298" stroke="#333" stroke-width="1.5" marker-end="url(#arr)"/>
+      <!-- Fork kanan: cek harga -->
+      <line x1="215" y1="273" x2="215" y2="298" stroke="#333" stroke-width="1.5" marker-end="url(#arr)"/>
+
+      <!-- Parallel A: Cek kalender -->
+      <rect x="50" y="298" width="130" height="36" rx="18" fill="#52b788"/>
+      <text x="115" y="313" text-anchor="middle" font-size="9.5" fill="#fff" font-weight="600">Lihat Kalender</text>
+      <text x="115" y="325" text-anchor="middle" font-size="9.5" fill="#fff" font-weight="600">Ketersediaan</text>
+
+      <!-- Parallel B: Cek harga -->
+      <rect x="150" y="298" width="130" height="36" rx="18" fill="#52b788"/>
+      <text x="215" y="313" text-anchor="middle" font-size="9.5" fill="#fff" font-weight="600">Lihat Detail</text>
+      <text x="215" y="325" text-anchor="middle" font-size="9.5" fill="#fff" font-weight="600">Harga &amp; Fasilitas</text>
+
+      <!-- JOIN -->
+      <line x1="115" y1="334" x2="115" y2="358" stroke="#333" stroke-width="1.5"/>
+      <line x1="215" y1="334" x2="215" y2="358" stroke="#333" stroke-width="1.5"/>
+      <rect x="80" y="358" width="170" height="8" rx="4" fill="#333"/>
+      <line x1="165" y1="366" x2="165" y2="392" stroke="#333" stroke-width="1.5" marker-end="url(#arr)"/>
+
+      <!-- 4. Isi form reservasi -->
+      <rect x="80" y="392" width="170" height="36" rx="18" fill="#2d6a4f"/>
+      <text x="165" y="407" text-anchor="middle" font-size="10" fill="#fff" font-weight="600">Mengisi Form Reservasi</text>
+      <text x="165" y="420" text-anchor="middle" font-size="9.5" fill="#ddd">(tanggal, tipe, jml tamu)</text>
+      <line x1="165" y1="428" x2="165" y2="455" stroke="#333" stroke-width="1.5" marker-end="url(#arr)"/>
+
+      <!-- Decision: Data lengkap? -->
+      <polygon points="165,455 240,480 165,505 90,480" fill="#f4a261" stroke="#e76f51" stroke-width="1.5"/>
+      <text x="165" y="477" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">Data</text>
+      <text x="165" y="491" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">Lengkap?</text>
+
+      <!-- No -> kembali isi -->
+      <line x1="90" y1="480" x2="50" y2="480" stroke="#e53935" stroke-width="1.5"/>
+      <line x1="50" y1="480" x2="50" y2="410" stroke="#e53935" stroke-width="1.5"/>
+      <line x1="50" y1="410" x2="80" y2="410" stroke="#e53935" stroke-width="1.5" marker-end="url(#arr)"/>
+      <text x="35" y="450" font-size="9" fill="#e53935" transform="rotate(-90,35,450)">Tidak</text>
+
+      <!-- Yes -> kirim -->
+      <line x1="165" y1="505" x2="165" y2="530" stroke="#333" stroke-width="1.5" marker-end="url(#arr)"/>
+      <text x="175" y="520" font-size="9" fill="#2d6a4f">Ya</text>
+
+      <!-- 5. Kirim reservasi -->
+      <rect x="80" y="530" width="170" height="36" rx="18" fill="#2d6a4f"/>
+      <text x="165" y="553" text-anchor="middle" font-size="10.5" fill="#fff" font-weight="600">Kirim Reservasi</text>
+
+      <!-- Arrow to sistem side -->
+      <line x1="250" y1="548" x2="360" y2="548" stroke="#333" stroke-width="1.5" marker-end="url(#arr)"/>
+
+      <!-- Sistem: Simpan & Notif -->
+      <rect x="360" y="530" width="180" height="36" rx="18" fill="#774936"/>
+      <text x="450" y="545" text-anchor="middle" font-size="10" fill="#fff" font-weight="600">Simpan ke Database</text>
+      <text x="450" y="558" text-anchor="middle" font-size="9.5" fill="#ddd">&amp; Kirim Email Konfirmasi</text>
+      <line x1="450" y1="566" x2="450" y2="595" stroke="#333" stroke-width="1.5" marker-end="url(#arr)"/>
+
+      <!-- Admin: review -->
+      <rect x="360" y="595" width="180" height="36" rx="18" fill="#774936"/>
+      <text x="450" y="619" text-anchor="middle" font-size="10.5" fill="#fff" font-weight="600">Admin Tinjau Reservasi</text>
+      <line x1="450" y1="631" x2="450" y2="658" stroke="#333" stroke-width="1.5" marker-end="url(#arr)"/>
+
+      <!-- Decision: Disetujui? -->
+      <polygon points="450,658 520,680 450,702 380,680" fill="#f4a261" stroke="#e76f51" stroke-width="1.5"/>
+      <text x="450" y="677" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">Disetujui?</text>
+
+      <!-- Yes path -->
+      <line x1="450" y1="702" x2="450" y2="728" stroke="#333" stroke-width="1.5" marker-end="url(#arr)"/>
+      <text x="460" y="718" font-size="9" fill="#2d6a4f">Ya</text>
+      <rect x="360" y="728" width="180" height="30" rx="15" fill="#52b788"/>
+      <text x="450" y="748" text-anchor="middle" font-size="10" fill="#fff" font-weight="600">Notif Konfirmasi + No.Rekening</text>
+
+      <!-- Line back to pengunjung: upload bukti -->
+      <line x1="360" y1="743" x2="250" y2="743" stroke="#333" stroke-width="1.5" marker-end="url(#arr)"/>
+      <rect x="80" y="728" width="170" height="30" rx="15" fill="#2d6a4f"/>
+      <text x="165" y="748" text-anchor="middle" font-size="10" fill="#fff" font-weight="600">Upload Bukti Transfer (DP)</text>
+
+      <!-- Final Node -->
+      <line x1="165" y1="758" x2="165" y2="780" stroke="#333" stroke-width="1.5"/>
+      <circle cx="165" cy="768" r="10" fill="none" stroke="#1a3d2b" stroke-width="2"/>
+      <circle cx="165" cy="768" r="6" fill="#1a3d2b"/>
+
+      <!-- No path (tolak) -->
+      <line x1="380" y1="680" x2="340" y2="680" stroke="#e53935" stroke-width="1.5"/>
+      <line x1="340" y1="680" x2="340" y2="612" stroke="#e53935" stroke-width="1.5"/>
+      <line x1="340" y1="612" x2="360" y2="612" stroke="#e53935" stroke-width="1.5" marker-end="url(#arr)"/>
+      <text x="325" y="650" font-size="9" fill="#e53935" transform="rotate(-90,325,650)">Tolak</text>
+    </svg>
+  </div>
+
+  <div class="info-box">
+    <strong>Keterangan Diagram:</strong> Diagram di atas menunjukkan alur reservasi pengunjung di website Bukit Senyum. Dimulai dari pengunjung membuka website, memilih menu reservasi, kemudian secara paralel (Fork/Join) melihat kalender ketersediaan dan detail harga. Setelah mengisi form, terdapat Decision Node untuk memvalidasi kelengkapan data — jika tidak lengkap, pengunjung diarahkan kembali ke form. Setelah data terkirim, sistem menyimpan ke database dan mengirimkan email notifikasi. Admin kemudian meninjau dan memutuskan persetujuan (Decision Node kedua). Jika disetujui, pengunjung mendapat konfirmasi dan nomor rekening untuk DP.
+  </div>
+</div>
+</section>
+<div style="margin-top: 30px; border-top: 2px solid var(--hijau-muda); padding-top: 20px;">
+    <h3>4c. Sequence Diagram: Alur Form Kontak</h3>
+    <p>Diagram ini menggambarkan urutan interaksi antara Pengunjung, Sistem (Halaman Kontak), dan Server dalam proses pengiriman pesan.</p>
+    
+    <div style="background: #fff; padding: 20px; border-radius: 8px; margin: 20px 0; overflow-x: auto; border: 1px solid #ddd;">
+        <svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg" style="max-width: 100%; height: auto;">
+            <line x1="100" y1="50" x2="100" y2="350" stroke="#1a3d2b" stroke-width="2" stroke-dasharray="5,5" />
+            <line x1="300" y1="50" x2="300" y2="350" stroke="#1a3d2b" stroke-width="2" stroke-dasharray="5,5" />
+            <line x1="500" y1="50" x2="500" y2="350" stroke="#1a3d2b" stroke-width="2" stroke-dasharray="5,5" />
+
+            <rect x="50" y="10" width="100" height="40" fill="#2d6a4f" rx="5" />
+            <text x="100" y="35" font-family="Arial" font-size="12" text-anchor="middle" fill="white">Pengunjung</text>
+            
+            <rect x="250" y="10" width="100" height="40" fill="#2d6a4f" rx="5" />
+            <text x="300" y="35" font-family="Arial" font-size="12" text-anchor="middle" fill="white">Halaman Kontak</text>
+            
+            <rect x="450" y="10" width="100" height="40" fill="#2d6a4f" rx="5" />
+            <text x="500" y="35" font-family="Arial" font-size="12" text-anchor="middle" fill="white">Server/DB</text>
+
+            <line x1="100" y1="100" x2="295" y2="100" stroke="black" stroke-width="2" marker-end="url(#arrow)" />
+            <text x="200" y="90" font-family="Arial" font-size="11" text-anchor="middle">1. Input Data & Klik Kirim</text>
+
+            <path d="M 300 130 L 330 130 L 330 150 L 305 150" fill="none" stroke="black" stroke-width="1.5" marker-end="url(#arrow)" />
+            <text x="340" y="145" font-family="Arial" font-size="11">2. Validasi Form</text>
+
+            <line x1="300" y1="190" x2="495" y2="190" stroke="black" stroke-width="2" marker-end="url(#arrow)" />
+            <text x="400" y="180" font-family="Arial" font-size="11" text-anchor="middle">3. Request simpanPesan()</text>
+
+            <line x1="495" y1="240" x2="305" y2="240" stroke="black" stroke-width="1.5" stroke-dasharray="5,5" marker-end="url(#arrow)" />
+            <text x="400" y="230" font-family="Arial" font-size="11" text-anchor="middle">4. Response Success</text>
+
+            <line x1="295" y1="290" x2="105" y2="290" stroke="black" stroke-width="1.5" stroke-dasharray="5,5" marker-end="url(#arrow)" />
+            <text x="200" y="280" font-family="Arial" font-size="11" text-anchor="middle">5. Tampilkan Pesan Sukses</text>
+
+            <defs>
+                <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+                    <path d="M0,0 L0,6 L9,3 z" fill="black" />
+                </marker>
+            </defs>
+        </svg>
+    </div>
+
+    <h4>Keterangan Alur:</h4>
+    <ol style="margin-left: 20px;">
+        <li><strong>Pengunjung (Actor):</strong> Melakukan input Nama, Email, dan Pesan, lalu memicu event klik tombol kirim.</li>
+        <li><strong>Halaman Kontak (Boundary):</strong> Melakukan validasi internal untuk memastikan tidak ada kolom yang kosong.</li>
+        <li><strong>Server/Database (Control/Entity):</strong> Menerima data melalui protokol HTTP/API, menyimpannya ke database, dan mengirimkan status balasan.</li>
+        <li><strong>Notasi:</strong> Garis lurus (→) menunjukkan pesan sinkron, garis putus-putus (-->) menunjukkan balasan atau response.</li>
+    </ol>
+</div>
+
+<!-- ===== SOAL 6 ===== -->
+<section class="section" id="soal6">
+<div class="container">
+  <span class="section-label">Bagian C · Soal 6</span>
+  <h2>Class Diagram</h2>
+
+  <div class="uml-wrap">
+    <svg viewBox="0 0 820 560" xmlns="http://www.w3.org/2000/svg" font-family="Lato,sans-serif" font-size="11">
+      <rect width="820" height="560" fill="#fafafa" rx="12"/>
+      <text x="410" y="28" text-anchor="middle" font-size="13" font-weight="700" fill="#1a3d2b">Class Diagram — Sistem Informasi Wisata Bukit Senyum</text>
+
+      <!-- Arrow defs -->
+      <defs>
+        <marker id="arrC" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#333"/>
+        </marker>
+        <marker id="diamond" markerWidth="12" markerHeight="8" refX="1" refY="4" orient="auto">
+          <polygon points="1,4 6,1 11,4 6,7" fill="#fff" stroke="#333" stroke-width="1"/>
+        </marker>
+        <marker id="diamond-fill" markerWidth="12" markerHeight="8" refX="1" refY="4" orient="auto">
+          <polygon points="1,4 6,1 11,4 6,7" fill="#333"/>
+        </marker>
+      </defs>
+
+      <!-- CLASS: User -->
+      <rect x="30" y="48" width="195" height="180" rx="6" fill="#e8f5e9" stroke="#2d6a4f" stroke-width="2"/>
+      <rect x="30" y="48" width="195" height="30" rx="6" fill="#2d6a4f"/>
+      <rect x="30" y="72" width="195" height="6" fill="#2d6a4f"/>
+      <text x="128" y="68" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">User</text>
+      <!-- Attributes -->
+      <text x="40" y="92">- userId: INT</text>
+      <text x="40" y="107">- nama: VARCHAR(100)</text>
+      <text x="40" y="122">- email: VARCHAR(100)</text>
+      <text x="40" y="137">- password: VARCHAR(255)</text>
+      <text x="40" y="152">- role: ENUM(admin,guest)</text>
+      <text x="40" y="167">- createdAt: DATETIME</text>
+      <!-- Divider -->
+      <line x1="30" y1="175" x2="225" y2="175" stroke="#2d6a4f" stroke-width="1"/>
+      <!-- Methods -->
+      <text x="40" y="191">+ login(): boolean</text>
+      <text x="40" y="206">+ logout(): void</text>
+      <text x="40" y="221">+ updateProfile(): void</text>
+
+      <!-- CLASS: Reservasi -->
+      <rect x="30" y="270" width="195" height="205" rx="6" fill="#fff3cd" stroke="#f4a261" stroke-width="2"/>
+      <rect x="30" y="270" width="195" height="30" rx="6" fill="#e76f51"/>
+      <rect x="30" y="294" width="195" height="6" fill="#e76f51"/>
+      <text x="128" y="290" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">Reservasi</text>
+      <text x="40" y="316">- reservasiId: INT</text>
+      <text x="40" y="331">- namaTamu: VARCHAR(100)</text>
+      <text x="40" y="346">- noHp: VARCHAR(20)</text>
+      <text x="40" y="361">- email: VARCHAR(100)</text>
+      <text x="40" y="376">- tglMasuk: DATE</text>
+      <text x="40" y="391">- tglKeluar: DATE</text>
+      <text x="40" y="406">- status: ENUM</text>
+      <line x1="30" y1="415" x2="225" y2="415" stroke="#e76f51" stroke-width="1"/>
+      <text x="40" y="432">+ buat(): void</text>
+      <text x="40" y="447">+ batalkan(): void</text>
+      <text x="40" y="462">+ getStatus(): string</text>
+
+      <!-- CLASS: Fasilitas -->
+      <rect x="310" y="48" width="210" height="200" rx="6" fill="#e3f2fd" stroke="#1565c0" stroke-width="2"/>
+      <rect x="310" y="48" width="210" height="30" rx="6" fill="#1565c0"/>
+      <rect x="310" y="72" width="210" height="6" fill="#1565c0"/>
+      <text x="415" y="68" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">Fasilitas</text>
+      <text x="320" y="92">- fasilitasId: INT</text>
+      <text x="320" y="107">- nama: VARCHAR(100)</text>
+      <text x="320" y="122">- tipe: ENUM(camping,pendopo)</text>
+      <text x="320" y="137">- harga: DECIMAL(10,2)</text>
+      <text x="320" y="152">- kapasitas: INT</text>
+      <text x="320" y="167">- deskripsi: TEXT</text>
+      <text x="320" y="182">- tersedia: BOOLEAN</text>
+      <line x1="310" y1="192" x2="520" y2="192" stroke="#1565c0" stroke-width="1"/>
+      <text x="320" y="208">+ cekKetersediaan(): bool</text>
+      <text x="320" y="223">+ updateHarga(): void</text>
+      <text x="320" y="238">+ getFasilitas(): array</text>
+
+      <!-- CLASS: Menu -->
+      <rect x="310" y="290" width="210" height="195" rx="6" fill="#fce4ec" stroke="#c62828" stroke-width="2"/>
+      <rect x="310" y="290" width="210" height="30" rx="6" fill="#c62828"/>
+      <rect x="310" y="314" width="210" height="6" fill="#c62828"/>
+      <text x="415" y="310" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">MenuMakanan</text>
+      <text x="320" y="336">- menuId: INT</text>
+      <text x="320" y="351">- namaMenu: VARCHAR(100)</text>
+      <text x="320" y="366">- kategori: ENUM(berat,camilan,minuman)</text>
+      <text x="320" y="381">- harga: DECIMAL(10,2)</text>
+      <text x="320" y="396">- deskripsi: TEXT</text>
+      <text x="320" y="411">- foto: VARCHAR(255)</text>
+      <line x1="310" y1="421" x2="520" y2="421" stroke="#c62828" stroke-width="1"/>
+      <text x="320" y="437">+ tambahMenu(): void</text>
+      <text x="320" y="452">+ hapusMenu(): void</text>
+      <text x="320" y="467">+ getByKategori(): array</text>
+
+      <!-- CLASS: Galeri -->
+      <rect x="600" y="48" width="195" height="170" rx="6" fill="#ede7f6" stroke="#6a1b9a" stroke-width="2"/>
+      <rect x="600" y="48" width="195" height="30" rx="6" fill="#6a1b9a"/>
+      <rect x="600" y="72" width="195" height="6" fill="#6a1b9a"/>
+      <text x="698" y="68" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">Galeri</text>
+      <text x="610" y="92">- galeriId: INT</text>
+      <text x="610" y="107">- judul: VARCHAR(150)</text>
+      <text x="610" y="122">- urlGambar: VARCHAR(255)</text>
+      <text x="610" y="137">- kategori: VARCHAR(50)</text>
+      <text x="610" y="152">- uploadedBy: INT</text>
+      <line x1="600" y1="162" x2="795" y2="162" stroke="#6a1b9a" stroke-width="1"/>
+      <text x="610" y="178">+ unggahFoto(): void</text>
+      <text x="610" y="193">+ hapusFoto(): void</text>
+      <text x="610" y="208">+ getByKategori(): array</text>
+
+      <!-- CLASS: Tiket -->
+      <rect x="600" y="270" width="195" height="170" rx="6" fill="#e0f7fa" stroke="#00695c" stroke-width="2"/>
+      <rect x="600" y="270" width="195" height="30" rx="6" fill="#00695c"/>
+      <rect x="600" y="294" width="195" height="6" fill="#00695c"/>
+      <text x="698" y="290" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">Tiket</text>
+      <text x="610" y="316">- tiketId: INT</text>
+      <text x="610" y="331">- jenisKendaraan: ENUM</text>
+      <text x="610" y="346">- harga: DECIMAL(10,2)</text>
+      <text x="610" y="361">- keterangan: TEXT</text>
+      <text x="610" y="376">- updatedAt: DATETIME</text>
+      <line x1="600" y1="386" x2="795" y2="386" stroke="#00695c" stroke-width="1"/>
+      <text x="610" y="402">+ updateHarga(): void</text>
+      <text x="610" y="417">+ getTiket(): array</text>
+      <text x="610" y="432">+ hitungTotal(): decimal</text>
+
+      <!-- RELATIONS -->
+      <!-- User --- manages ---> Galeri (association) -->
+      <line x1="225" y1="100" x2="600" y2="100" stroke="#333" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arrC)"/>
+      <text x="400" y="92" font-size="9" fill="#333" text-anchor="middle">mengelola</text>
+      <text x="230" y="95" font-size="8" fill="#333">1</text>
+      <text x="593" y="95" font-size="8" fill="#333">*</text>
+
+      <!-- User --- Reservasi (1 to many, association) -->
+      <line x1="128" y1="228" x2="128" y2="270" stroke="#333" stroke-width="1.5" marker-end="url(#arrC)"/>
+      <text x="140" y="252" font-size="8" fill="#333">1</text>
+      <text x="140" y="268" font-size="8" fill="#333">*</text>
+      <text x="155" y="260" font-size="9" fill="#333">membuat</text>
+
+      <!-- Reservasi --- Fasilitas (Asosiasi) -->
+      <line x1="225" y1="370" x2="310" y2="200" stroke="#333" stroke-width="1.5" marker-end="url(#arrC)"/>
+      <text x="260" y="295" font-size="9" fill="#333" transform="rotate(-55,260,295)">memesan</text>
+      <text x="222" y="368" font-size="8" fill="#333">*</text>
+      <text x="308" y="202" font-size="8" fill="#333">1</text>
+
+      <!-- Fasilitas ◆--- Tiket (Agregasi: fasilitas punya tiket) -->
+      <line x1="520" y1="148" x2="600" y2="340" stroke="#333" stroke-width="1.5" marker-start="url(#diamond)" marker-end="url(#arrC)"/>
+      <text x="580" y="265" font-size="9" fill="#333">1..*</text>
+    </svg>
+  </div>
+
+  <h3>Penjelasan Peran Masing-Masing Kelas</h3>
+  <div class="card-grid">
+    <div class="card"><h4>👤 User</h4><p>Menyimpan data pengguna sistem, baik Admin maupun Pengunjung tamu. Atribut <code>role</code> membedakan hak akses keduanya. Kelas ini berelasi dengan Reservasi (satu admin mengelola banyak reservasi) dan Galeri (admin mengunggah foto).</p></div>
+    <div class="card"><h4>📋 Reservasi</h4><p>Menyimpan semua data pemesanan camping atau pendopo oleh pengunjung. Berelasi dengan Fasilitas (setiap reservasi memesan satu fasilitas) dan User (dibuat oleh pengunjung, dikelola admin).</p></div>
+    <div class="card"><h4>🏕️ Fasilitas</h4><p>Merepresentasikan semua fasilitas yang dapat dipesan (camping ground dan pendopo). Atribut <code>tipe</code> dan <code>harga</code> memungkinkan admin mengelola berbagai jenis fasilitas dalam satu tabel. Beragregasi dengan Tiket karena fasilitas memiliki skema harga/tiket terkait.</p></div>
+    <div class="card"><h4>🍽️ MenuMakanan</h4><p>Menyimpan daftar menu warung Bukit Senyum dengan kategori dan harga. Berdiri sendiri namun dikelola oleh Admin (User). Method <code>getByKategori()</code> mendukung filter tampilan di front-end.</p></div>
+    <div class="card"><h4>🖼️ Galeri</h4><p>Menyimpan metadata foto dan video yang diunggah Admin. Atribut <code>uploadedBy</code> berasosiasi dengan <code>userId</code> pada kelas User untuk audit log.</p></div>
+    <div class="card"><h4>🎫 Tiket</h4><p>Menyimpan harga tiket masuk per jenis kendaraan. Berelasi agregasi dengan Fasilitas karena tiket adalah bagian dari informasi harga keseluruhan fasilitas Bukit Senyum.</p></div>
+  </div>
+</div>
+</section>
+
+<!-- ===== SOAL 7 ===== -->
+<section class="section" id="soal7">
+<div class="container">
+  <span class="section-label">Bagian D · Soal 7</span>
+  <h2>Prototipe Halaman Utama Website</h2>
+  <div class="info-box">
+    Prototipe lengkap website Bukit Senyum tersedia di file <strong>prototipe.html</strong>. File tersebut memuat Header/Navbar, Hero Section, Informasi Harga Tiket, Menu Camping & Pendopo, Galeri, dan Footer — dalam desain responsif berbasis identitas lokal Sumatera Utara.
+  </div>
+  <p>Klik tautan berikut untuk membuka prototipe di tab baru:</p>
+  <a href="prototipe.html" target="_blank" style="display:inline-block;margin-top:16px;background:var(--hijau);color:#fff;padding:14px 32px;border-radius:50px;text-decoration:none;font-weight:700;font-size:1rem;transition:background .2s;" onmouseover="this.style.background='var(--hijau-tua)'" onmouseout="this.style.background='var(--hijau)'">
+    🌄 Buka Prototipe Bukit Senyum →
+  </a>
+</div>
+</section>
+
+<!-- ===== SOAL 8 ===== -->
+<section class="section" id="soal8">
+<div class="container">
+  <span class="section-label">Bagian D · Soal 8</span>
+  <h2>Refleksi & Rencana Pengembangan</h2>
+
+  <div class="refleksi-box">
+    <h3>Mengapa Memilih Bukit Senyum?</h3>
+    <p>Saya memilih Bukit Senyum sebagai objek studi karena destinasi wisata alam ini salah satu upaya mengenal desa saya dan menyimpan potensi besar yang belum dioptimalkan secara digital. Banyak pengunjung yang baru mengetahui keberadaannya dari rekomendasi orang ke orang (word of mouth), sehingga jangkauannya sangat terbatas. Padahal, Bukit Senyum memiliki fasilitas yang cukup lengkap — mulai dari area camping, pendopo untuk berbagai acara, hingga warung makanan dengan menu yang terjangkau. Potensi ini sangat sayang untuk dibiarkan tidak terjangkau oleh wisatawan dari luar daerah. Sebagai mahasiswa Teknik Informatika, saya merasa bertanggung jawab untuk menjembatani potensi lokal ini dengan teknologi digital agar manfaatnya dapat dirasakan lebih luas, baik oleh pengelola, masyarakat sekitar, maupun wisatawan.</p>
+
+    <h3>Tantangan yang Diperkirakan</h3>
+    <p>Tantangan terbesar pertama adalah <strong>resistensi adopsi teknologi</strong> dari pengelola, terutama jika mereka tidak terbiasa dengan sistem komputer. Perlu pelatihan intensif agar admin dapat mengoperasikan dashboard dengan baik. Kedua, <strong>kualitas konten visual</strong> — foto dan video berkualitas tinggi sangat dibutuhkan untuk menarik wisatawan, namun memerlukan investasi alat dan waktu. Ketiga, <strong>konektivitas internet di area bukit</strong> aplikasinya harus menggunakan kunekso stabil dan kita memutuskan menggunakan aplikasi online,agar updatenya lebih memudahkan menggunakan aplikasi. Keempat, <strong>kepercayaan sistem pembayaran online</strong> dari pengunjung yang masih skeptis terhadap transaksi digital perlu dibangun melalui desain yang transparan dan ulasan pengguna yang otentik.</p>
+
+    <h3>Siapa yang Direkomendasikan Mengelola?</h3>
+    <p>Saya merekomendasikan pembentukan <strong>tim pengelola kecil yang terdiri dari 2–3 orang</strong>: (1) <em>Admin Konten</em> dari pihak pengelola wisata yang bertanggung jawab atas pembaruan informasi, harga, dan galeri; (2) <em>Admin Reservasi</em> yang merespons pemesanan dan konfirmasi pembayaran; dan (3) <em>Konsultan IT lokal</em> (bisa mahasiswa Teknik Informatika setempat) untuk maintenance teknis. Pengelolaan oleh orang lokal juga memastikan informasi yang ditampilkan selalu akurat dan mencerminkan kondisi nyata di lapangan, serta membantu menciptakan lapangan kerja di sekitar wisata.</p>
+
+    <h3>Rencana Pengembangan Lanjutan</h3>
+    <p>Jika proyek ini dilanjutkan ke semester berikutnya, beberapa fitur tambahan yang akan dikembangkan meliputi: (1) <strong>Sistem Ulasan & Rating</strong> dari pengunjung yang telah berkunjung, terintegrasi dengan Google Review; (2) <strong>Aplikasi Mobile (Android/iOS)</strong> menggunakan Flutter untuk pengalaman yang lebih baik di smartphone; (3) <strong>Sistem Pembayaran Online</strong> melalui Midtrans atau Doku untuk memudahkan pembayaran DP reservasi; (4) <strong>Dashboard Statistik Real-Time</strong> yang menampilkan jumlah kunjungan, pendapatan, dan tingkat hunian camping/pendopo; (5) <strong>Chatbot WhatsApp</strong> menggunakan AI untuk menjawab pertanyaan umum secara otomatis di luar jam operasional.</p>
+  </div>
+</div>
+</section>
+
+<footer>
+  <strong>Tugas Individu — Rekayasa Perangkat Lunak | Semester 2</strong><br>
+  <span>[Rivanny p simanjuntak] · [253303611221] · [TI A]</span><br>
+  <span style="font-size:.75rem;opacity:.5;margin-top:6px;display:block;">Program Studi Teknik Informatika</span>
+</footer>
+
+<script>
+  // Active nav highlight
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('nav a');
+  window.addEventListener('scroll', () => {
+    let cur = '';
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 80) cur = s.id; });
+    navLinks.forEach(a => { a.classList.toggle('active', a.getAttribute('href') === '#' + cur); });
+  });
+</script>
+</body>
+</html>

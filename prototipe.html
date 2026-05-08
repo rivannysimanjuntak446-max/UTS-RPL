@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Bukit Senyum — Wisata Alam Sumatera Utara</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --hijau-gelap:#0d2b1e;
+  --hijau-tua:#1a4a30;
+  --hijau:#2d7a50;
+  --hijau-muda:#4caf80;
+  --kuning:#f5c842;
+  --oranye:#e8773a;
+  --krem:#fdf8ef;
+  --krem2:#f5efe0;
+  --coklat:#7c4a28;
+  --putih:#fff;
+  --teks:#1a1a1a;
+  --abu:#666;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--krem);color:var(--teks);overflow-x:hidden;}
+
+/* ── NAVBAR ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:999;
+  padding:0 5%;
+  display:flex;align-items:center;justify-content:space-between;
+  height:70px;
+  background:rgba(13,43,30,.95);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(255,255,255,.08);
+  transition:all .3s;
+}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.logo-icon{width:38px;height:38px;background:linear-gradient(135deg,var(--hijau-muda),var(--kuning));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;}
+.logo-text{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:#fff;letter-spacing:.5px;}
+.logo-text span{color:var(--kuning);}
+.nav-menu{display:flex;list-style:none;gap:6px;}
+.nav-menu a{color:rgba(255,255,255,.75);text-decoration:none;font-size:.85rem;padding:8px 14px;border-radius:8px;transition:all .2s;font-weight:500;}
+.nav-menu a:hover{color:#fff;background:rgba(255,255,255,.1);}
+.nav-cta{background:var(--kuning);color:var(--hijau-gelap)!important;font-weight:700!important;border-radius:50px!important;}
+.nav-cta:hover{background:#fff!important;color:var(--hijau-gelap)!important;}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:5px;}
+.hamburger span{display:block;width:24px;height:2px;background:#fff;border-radius:2px;transition:.3s;}
+@media(max-width:768px){
+  .nav-menu{display:none;position:fixed;top:70px;left:0;right:0;background:var(--hijau-gelap);flex-direction:column;padding:20px;gap:4px;}
+  .nav-menu.open{display:flex;}
+  .hamburger{display:flex;}
+}
+
+/* ── HERO ── */
+.hero{
+  min-height:100vh;
+  background: linear-gradient(to bottom, rgba(13,43,30,.6) 0%, rgba(13,43,30,.3) 50%, rgba(13,43,30,.7) 100%),
+    url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1600&q=80') center/cover no-repeat;
+  display:flex;align-items:center;justify-content:center;text-align:center;
+  padding:100px 24px 60px;
+  position:relative;
+}
+/* Batik-inspired bottom wave */
+.hero::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:80px;
+  background:var(--krem);
+  clip-path:ellipse(55% 100% at 50% 100%);
+}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);padding:8px 20px;border-radius:50px;color:rgba(255,255,255,.9);font-size:.8rem;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:28px;backdrop-filter:blur(8px);}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.5rem,6vw,5rem);color:#fff;font-weight:900;line-height:1.1;margin-bottom:20px;}
+.hero h1 em{color:var(--kuning);font-style:normal;}
+.hero p{color:rgba(255,255,255,.85);font-size:clamp(1rem,2vw,1.2rem);max-width:580px;margin:0 auto 40px;line-height:1.7;}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;}
+.btn{display:inline-block;padding:14px 32px;border-radius:50px;font-weight:600;font-size:.95rem;text-decoration:none;cursor:pointer;border:none;transition:all .25s;}
+.btn-primary{background:var(--kuning);color:var(--hijau-gelap);}
+.btn-primary:hover{background:#fff;transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.2);}
+.btn-outline{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.5);}
+.btn-outline:hover{background:rgba(255,255,255,.1);border-color:#fff;}
+.hero-stats{display:flex;gap:40px;justify-content:center;flex-wrap:wrap;margin-top:20px;}
+.stat{text-align:center;}
+.stat-num{font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;color:var(--kuning);}
+.stat-lbl{font-size:.78rem;color:rgba(255,255,255,.7);letter-spacing:1px;text-transform:uppercase;}
+
+/* ── SECTIONS COMMON ── */
+section{padding:80px 5%;}
+.section-tag{display:inline-block;background:rgba(45,122,80,.12);color:var(--hijau);font-size:.72rem;letter-spacing:2px;text-transform:uppercase;padding:5px 14px;border-radius:50px;font-weight:600;margin-bottom:12px;}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3.5vw,2.6rem);color:var(--hijau-gelap);margin-bottom:12px;line-height:1.2;}
+.section-sub{color:var(--abu);font-size:1rem;max-width:520px;line-height:1.6;}
+.section-header{margin-bottom:48px;}
+.text-center{text-align:center;}
+.text-center .section-sub{margin:0 auto;}
+
+/* ── ABOUT STRIP ── */
+.about-strip{background:var(--hijau-tua);padding:50px 5%;display:flex;align-items:center;justify-content:space-around;flex-wrap:wrap;gap:32px;}
+.strip-item{display:flex;align-items:center;gap:14px;color:#fff;}
+.strip-icon{width:52px;height:52px;background:rgba(255,255,255,.1);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.6rem;flex-shrink:0;}
+.strip-item h4{font-size:1rem;font-weight:600;margin-bottom:2px;}
+.strip-item p{font-size:.82rem;opacity:.7;}
+
+/* ── TIKET SECTION ── */
+.tiket-section{background:var(--krem);}
+.tiket-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;}
+.tiket-card{background:#fff;border-radius:20px;padding:28px 24px;text-align:center;box-shadow:0 2px 16px rgba(0,0,0,.06);border:2px solid transparent;transition:all .3s;cursor:default;}
+.tiket-card:hover{border-color:var(--hijau-muda);transform:translateY(-6px);box-shadow:0 12px 32px rgba(45,122,80,.15);}
+.tiket-card .vehicle{font-size:2.5rem;margin-bottom:12px;}
+.tiket-card h3{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--hijau-gelap);margin-bottom:8px;}
+.tiket-card .price{font-size:1.6rem;font-weight:700;color:var(--hijau);margin:10px 0 6px;}
+.tiket-card small{font-size:.78rem;color:var(--abu);line-height:1.5;}
+
+/* ── CAMPING & PENDOPO ── */
+.paket-section{background:var(--krem2);}
+.tabs{display:flex;gap:8px;margin-bottom:32px;flex-wrap:wrap;}
+.tab-btn{padding:10px 24px;border-radius:50px;border:2px solid var(--hijau);background:transparent;color:var(--hijau);font-weight:600;font-size:.9rem;cursor:pointer;transition:all .2s;}
+.tab-btn.active,.tab-btn:hover{background:var(--hijau);color:#fff;}
+.tab-content{display:none;}
+.tab-content.active{display:block;}
+.paket-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px;}
+.paket-card{background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.08);transition:transform .3s;}
+.paket-card:hover{transform:translateY(-6px);}
+.paket-header{padding:20px 24px;background:linear-gradient(135deg,var(--hijau-tua),var(--hijau));}
+.paket-header.pendopo{background:linear-gradient(135deg,var(--coklat),var(--oranye));}
+.paket-header h3{font-family:'Playfair Display',serif;font-size:1.2rem;color:#fff;margin-bottom:4px;}
+.paket-header .price-big{font-size:1.8rem;font-weight:700;color:var(--kuning);}
+.paket-header small{font-size:.75rem;color:rgba(255,255,255,.7);}
+.paket-body{padding:20px 24px;}
+.paket-body ul{list-style:none;}
+.paket-body ul li{padding:7px 0;font-size:.9rem;color:#444;border-bottom:1px solid #f0ebe3;display:flex;align-items:center;gap:8px;}
+.paket-body ul li:last-child{border:none;}
+.paket-body ul li::before{content:'✓';color:var(--hijau-muda);font-weight:700;flex-shrink:0;}
+.badge-pop{background:var(--kuning);color:var(--hijau-gelap);font-size:.7rem;padding:2px 8px;border-radius:10px;font-weight:700;margin-left:auto;}
+
+/* ── MENU ── */
+.menu-section{background:var(--krem);}
+.menu-filter{display:flex;gap:8px;margin-bottom:28px;flex-wrap:wrap;}
+.filter-btn{padding:8px 18px;border-radius:50px;border:1.5px solid #ddd;background:transparent;cursor:pointer;font-size:.82rem;font-weight:500;transition:all .2s;}
+.filter-btn.active,.filter-btn:hover{background:var(--hijau);color:#fff;border-color:var(--hijau);}
+.menu-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;}
+.menu-item{background:#fff;border-radius:16px;padding:18px 20px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 2px 10px rgba(0,0,0,.05);transition:transform .2s;}
+.menu-item:hover{transform:translateY(-3px);}
+.menu-item-info h4{font-size:.95rem;font-weight:600;color:var(--hijau-gelap);margin-bottom:4px;}
+.menu-item-info span{font-size:.78rem;color:var(--abu);}
+.menu-price{font-size:1.05rem;font-weight:700;color:var(--hijau);white-space:nowrap;margin-left:12px;}
+
+/* ── GALLERY ── */
+.gallery-section{background:var(--hijau-gelap);}
+.gallery-section .section-title{color:#fff;}
+.gallery-section .section-sub{color:rgba(255,255,255,.6);}
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,200px);gap:12px;}
+.gallery-grid .g1{grid-column:span 2;grid-row:span 2;}
+.gal-item{border-radius:16px;overflow:hidden;background:#1a4a30;display:flex;align-items:center;justify-content:center;position:relative;cursor:pointer;}
+.gal-item:hover .gal-overlay{opacity:1;}
+.gal-placeholder{font-size:3rem;opacity:.3;}
+.gal-overlay{position:absolute;inset:0;background:rgba(0,0,0,.4);display:flex;align-items:center;justify-content:center;opacity:0;transition:.3s;}
+.gal-overlay span{color:#fff;font-size:1.5rem;}
+.gal-label{position:absolute;bottom:12px;left:12px;background:rgba(0,0,0,.6);color:#fff;padding:4px 10px;border-radius:8px;font-size:.75rem;font-weight:500;}
+/* Color fills for gallery placeholders */
+.gc1{background:linear-gradient(135deg,#1a4a30,#2d7a50);}
+.gc2{background:linear-gradient(135deg,#0d2b1e,#1a4a30);}
+.gc3{background:linear-gradient(135deg,#7c4a28,#e8773a);}
+.gc4{background:linear-gradient(135deg,#1a4a30,#4caf80);}
+.gc5{background:linear-gradient(135deg,#0d2b1e,#2d7a50);}
+
+/* ── KONTAK ── */
+.kontak-section{background:var(--krem2);}
+.kontak-wrap{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;}
+.kontak-info h3{font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--hijau-gelap);margin-bottom:16px;}
+.kontak-item{display:flex;gap:14px;margin-bottom:20px;align-items:flex-start;}
+.k-icon{width:44px;height:44px;background:var(--hijau);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;}
+.k-label{font-size:.75rem;color:var(--abu);margin-bottom:2px;text-transform:uppercase;letter-spacing:.5px;}
+.k-val{font-size:.95rem;font-weight:600;color:var(--teks);}
+.map-placeholder{background:linear-gradient(135deg,var(--hijau-tua),var(--hijau));border-radius:20px;height:220px;display:flex;align-items:center;justify-content:center;margin-top:16px;font-size:3rem;color:rgba(255,255,255,.3);}
+.form-card{background:#fff;border-radius:24px;padding:36px;box-shadow:0 4px 24px rgba(0,0,0,.07);}
+.form-card h3{font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--hijau-gelap);margin-bottom:24px;}
+.form-group{margin-bottom:18px;}
+.form-group label{display:block;font-size:.8rem;font-weight:600;color:var(--hijau-tua);margin-bottom:6px;text-transform:uppercase;letter-spacing:.5px;}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:12px 16px;border:2px solid #e8e0d4;border-radius:12px;font-family:'DM Sans',sans-serif;font-size:.9rem;background:var(--krem);outline:none;transition:border .2s;}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--hijau-muda);background:#fff;}
+.form-group textarea{resize:vertical;min-height:100px;}
+.btn-submit{width:100%;padding:14px;background:var(--hijau);color:#fff;border:none;border-radius:50px;font-size:1rem;font-weight:700;cursor:pointer;transition:all .25s;font-family:'DM Sans',sans-serif;}
+.btn-submit:hover{background:var(--hijau-tua);transform:translateY(-2px);}
+.wa-btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:14px;background:#25d366;color:#fff;border:none;border-radius:50px;font-size:1rem;font-weight:700;cursor:pointer;transition:all .25s;font-family:'DM Sans',sans-serif;text-decoration:none;margin-top:12px;}
+.wa-btn:hover{background:#128c7e;transform:translateY(-2px);}
+@media(max-width:700px){.kontak-wrap{grid-template-columns:1fr;}}
+
+/* ── FOOTER ── */
+footer{background:var(--hijau-gelap);color:rgba(255,255,255,.6);padding:60px 5% 30px;}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px;margin-bottom:48px;}
+.footer-brand .logo-text{font-size:1.5rem;color:#fff;}
+.footer-brand p{margin-top:12px;font-size:.85rem;line-height:1.7;}
+.footer-col h4{color:#fff;font-weight:600;margin-bottom:16px;font-size:.9rem;letter-spacing:.5px;}
+.footer-col ul{list-style:none;}
+.footer-col ul li{margin-bottom:10px;}
+.footer-col ul li a{color:rgba(255,255,255,.55);text-decoration:none;font-size:.85rem;transition:.2s;}
+.footer-col ul li a:hover{color:var(--kuning);}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:gap;font-size:.8rem;}
+.footer-bottom .identity{color:rgba(255,255,255,.4);}
+@media(max-width:600px){.footer-grid{grid-template-columns:1fr;gap:32px;}.gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto;}.gallery-grid .g1{grid-column:span 2;grid-row:auto;}}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
+.hero-badge,.hero h1,.hero p,.hero-btns,.hero-stats{animation:fadeUp .7s ease both;}
+.hero h1{animation-delay:.1s;}
+.hero p{animation-delay:.2s;}
+.hero-btns{animation-delay:.3s;}
+.hero-stats{animation-delay:.45s;}
+
+/* ── TOAST ── */
+.toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--hijau-tua);color:#fff;padding:14px 28px;border-radius:50px;font-size:.9rem;font-weight:600;transition:.4s;z-index:9999;opacity:0;}
+.toast.show{transform:translateX(-50%) translateY(0);opacity:1;}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">
+    <div class="logo-icon">🌄</div>
+    <span class="logo-text">Bukit<span>Senyum</span></span>
+  </a>
+  <ul class="nav-menu" id="navMenu">
+    <li><a href="#tiket">Tiket</a></li>
+    <li><a href="#paket">Camping & Pendopo</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#galeri">Galeri</a></li>
+    <li><a href="#kontak" class="nav-cta">Reservasi</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="beranda">
+  <div>
+    <div class="hero-badge">🌿 Sumatera Utara · Wisata Alam</div>
+    <h1>Siap selalu senyum Di<br><em>Bukit Senyum</em></h1>
+    <p>nge camp dengan nyaman,bersantai di pendopo yang luas,dan dapat menikmati kulineran yang ada di bukit senyum dengan senyum yang lebar-semua dalam satu destinasi wisata alam.</p>
+    <div class="hero-btns">
+      <a href="#kontak" class="btn btn-primary">⛺ Reservasi Sekarang</a>
+      <a href="#paket" class="btn btn-outline">Lihat Paket</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-num">500+</div><div class="stat-lbl">Pengunjung/Bulan</div></div>
+      <div class="stat"><div class="stat-num">4.8★</div><div class="stat-lbl">Rating Pengunjung</div></div>
+      <div class="stat"><div class="stat-num">5</div><div class="stat-lbl">Jenis Fasilitas</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT STRIP -->
+<div class="about-strip">
+  <div class="strip-item"><div class="strip-icon">🌅</div><div><h4>Panorama Indah</h4><p>Sunrise & sunset terbaik di puncak bukit Senyum</p></div></div>
+  <div class="strip-item"><div class="strip-icon">⛺</div><div><h4>Area Camping</h4><p>Lahan luas, aman,berrsih, dan berpenampung</p></div></div>
+  <div class="strip-item"><div class="strip-icon">🏛️</div><div><h4>Pendopo & Gazebo</h4><p>Cocok untuk gathering hingga 100 orang</p></div></div>
+  <div class="strip-item"><div class="strip-icon">🍳</div><div><h4>Warung Lokal</h4><p>Makanan dan minuman harga terjangkau</p></div></div>
+  <div class="strip-item"><div class="strip-icon">🅿️</div><div><h4>Parkir Luas</h4><p>Motor, mobil, bus tersedia</p></div></div>
+</div>
+
+<!-- TIKET -->
+<section class="tiket-section" id="tiket">
+  <div class="section-header text-center">
+    <span class="section-tag">🎫 Harga Masuk</span>
+    <h2 class="section-title">Tiket Per Kendaraan</h2>
+    <p class="section-sub">Harga tiket masuk berlaku per kendaraan. Penumpang tidak lagi membayar.</p>
+  </div>
+  <div class="tiket-grid">
+    <div class="tiket-card">
+      <div class="vehicle">🏍️</div>
+      <h3>Sepeda Motor</h3>
+      <div class="price">Rp 5.000</div>
+      <small>Sudah termasuk 2 penumpang<br></small>
+    </div>
+    <div class="tiket-card">
+      <div class="vehicle">🚗</div>
+      <h3>Mobil / SUV</h3>
+      <div class="price">Rp 10.000</div>
+      <small>Sudah termasuk 4 penumpang<br></small>
+    </div>
+    <div class="tiket-card">
+      <div class="vehicle">🚐</div>
+      <h3>Minibus / ELF</h3>
+      <div class="price">Rp 30.000</div>
+      <small>Kapasitas hingga 12 penumpang<br>Cocok untuk rombongan kecil</small>
+    </div>
+    <div class="tiket-card">
+      <div class="vehicle">🚌</div>
+      <h3>Bus Pariwisata</h3>
+      <div class="price">Rp 50.000</div>
+      <small>Kapasitas di atas 12 penumpang<br>Cocok untuk wisata rombongan</small>
+    </div>
+  </div>
+  <p style="text-align:center;margin-top:24px;color:var(--abu);font-size:.85rem;">⏰ Jam Buka: 07.00 – 20.00 WIB · Setiap hari termasuk hari libur nasional</p>
+</section>
+
+<!-- CAMPING & PENDOPO PAKET -->
+<section class="paket-section" id="paket">
+  <div style="max-width:1100px;margin:0 auto;">
+    <div class="section-header">
+      <span class="section-tag">📦 Paket Fasilitas</span>
+      <h2 class="section-title">Camping & Pendopo</h2>
+      <p class="section-sub">Pilih paket yang sesuai kebutuhan. Reservasi disarankan minimal 1×24 jam sebelum kunjungan.</p>
+    </div>
+    <div class="tabs">
+      <button class="tab-btn active" onclick="showTab('camping',this)">⛺ Camping</button>
+      <button class="tab-btn" onclick="showTab('pendopo',this)">🏛️ Pendopo & Gazebo</button>
+    </div>
+
+    <!-- Camping -->
+    <div class="tab-content active" id="tab-camping">
+      <div class="paket-grid">
+        <div class="paket-card">
+          <div class="paket-header">
+            <h3>Camping Reguler</h3>
+            <div class="price-big">Rp 130.000 <small style="font-size:.7rem">/malam</small></div>
+            <small>Maks. 2 orang · 1 tenda kecil</small>
+          </div>
+          <div class="paket-body">
+            <ul>
+              <li>Lahan camping bebas pilih</li>
+              <li>Akses toilet umum</li>
+              <li>tenda</li>
+              
+            </ul>
+          </div>
+        </div>
+        <div class="paket-card">
+          <div class="paket-header">
+            <h3>Camping Reguler</h3>
+            <div class="price-big">Rp 250.000 <small style="font-size:.7rem">/malam</small></div>
+            <small>Maks. 4 orang · Lahan </small>
+          </div>
+          <div class="paket-body">
+            <ul>
+              <li>Lahan bebas pilih </li>
+              <li>Akses Toilet Umum</li>
+              <li>tenda</li>
+              
+            </ul>
+          </div>
+        </div>
+        <div class="paket-card">
+          <div class="paket-header">
+            <h3>camping reguler</h3>
+            <div class="price-big">Rp 350.000 <small style="font-size:.7rem">/malam</small></div>
+            <small>Maks.5,6 orang</small>
+          </div>
+          <div class="paket-body">
+            <ul>
+              <li>Lahan bebas pilih</li>
+              <li>akses toilet umum</li>
+              <li>Tenda</li>
+              
+            </ul>
+          </div>
+        </div>
+        <div class="paket-card">
+          <div class="paket-header">
+            <h3>Glamping</h3>
+            <div class="price-big">Rp 1.250.000-1.950.000 <small style="font-size:.7rem">/malam</small></div>
+            <small>Paling populer!</small>
+          </div>
+          <div class="paket-body">
+            <ul>
+              <li>Lahan camping pilihan</li>
+              <li>sofa angin + tempat tidur angin + meja +kursi + bantal + selimut.</li>
+              <li>akses toilet umum</li>
+              <li>akses parkiran gratis</li>
+              <li>Tenda besar<span class="badge-pop">Terlaris</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pendopo -->
+    <div class="tab-content" id="tab-pendopo">
+      <div class="paket-grid">
+        <div class="paket-card">
+          <div class="paket-header pendopo">
+            <h3>Gazebo Kecil</h3>
+            <div class="price-big">Rp 30.000 <small style="font-size:.7rem">/sesi</small></div>
+            <small>Maks. 4 orang · tidak ada sesi jam</small>
+          </div>
+          <div class="paket-body">
+            <ul>
+              <li>1 gazebo tepi bukit</li>
+              <li>Pemandangan alam bebas</li>
+              <li>Meja dan bangku kayu</li>
+              <li>Perpanjangan: Rp 10rb/jam</li>
+            </ul>
+          </div>
+        </div>
+        <div class="paket-card">
+          <div class="paket-header pendopo">
+            <h3>Gazebo Sedang</h3>
+            <div class="price-big">Rp 50.000 <small style="font-size:.7rem">/sesi</small></div>
+            <small>Maks. 8 orang · tidak ada sesi jam</small>
+          </div>
+          <div class="paket-body">
+            <ul>
+              <li>Gazebo dengan atap permanen</li>
+              <li>Listrik</li>
+              <li>Cocok untuk arisan kecil</li>
+              
+            </ul>
+          </div>
+        </div>
+        <div class="paket-card">
+          <div class="paket-header pendopo">
+            <h3>Pendopo Besar</h3>
+            <div class="price-big">Rp 300.000 <small style="font-size:.7rem">/sesi</small></div>
+            <small>Maks. 50 orang · tidak ada sesi jam</small>
+          </div>
+          <div class="paket-body">
+            <ul>
+              <li>Pendopo dengan lantai kayu</li>
+              <li>Listrik/lampu</li>
+              <li>Cocok untuk gathering keluarga</li>
+              <li>cocok untuk arisan/reatreet</li>
+            </ul>
+          </div>
+        </div>
+        <div class="paket-card">
+          <div class="paket-header pendopo">
+            
+          </div>
+          <div class="paket-body">
+            <ul>
+              
+              <li><span class="badge-pop">Terlaris</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section class="menu-section" id="menu">
+  <div style="max-width:1100px;margin:0 auto;">
+    <div class="section-header">
+      <span class="section-tag">🍽️ Warung Bukit Senyum</span>
+      <h2 class="section-title">Menu Makanan & Minuman</h2>
+      <p class="section-sub">Nikmati kuliner lokal dengan harga yang sangat terjangkau, langsung di ketinggian bukit.</p>
+    </div>
+    <div class="menu-filter">
+      <button class="filter-btn active" onclick="filterMenu('all',this)">Semua</button>
+      <button class="filter-btn" onclick="filterMenu('berat',this)">🍛 Makanan Berat</button>
+      <button class="filter-btn" onclick="filterMenu('camilan',this)">🌽 Camilan</button>
+      <button class="filter-btn" onclick="filterMenu('minuman',this)">☕ Minuman</button>
+    </div>
+    <div class="menu-grid" id="menuGrid">
+      <!-- Berat -->
+      <div class="menu-item" data-cat="berat"><div class="menu-item-info"><h4>Nasi Goreng Spesial</h4><span>🍳 Makanan Berat</span></div><div class="menu-price">Rp 18.000</div></div>
+      <div class="menu-item" data-cat="berat"><div class="menu-item-info"><h4>Mie Goreng / Rebus</h4><span>🍜 Makanan Berat</span></div><div class="menu-price">Rp 15.000</div></div>
+      <div class="menu-item" data-cat="berat"><div class="menu-item-info"><h4>Popmie</h4><span>🍗 Makanan Berat</span></div><div class="menu-price">Rp 10.000</div></div>
+      <div class="menu-item" data-cat="berat"><div class="menu-item-info"><h4>Bakso Kuah</h4><span>🥣 Makanan Berat</span></div><div class="menu-price">Rp 15.000</div></div>
+      <!-- Camilan -->
+      <div class="menu-item" data-cat="camilan"><div class="menu-item-info"><h4>snack</h4><span>🍌 Camilan</span></div><div class="menu-price">Rp 10.000</div></div>
+      <div class="menu-item" data-cat="camilan"><div class="menu-item-info"><h4>goreng</h4><span>🌽 Camilan</span></div><div class="menu-price">Rp 10.000</div></div>
+      <div class="menu-item" data-cat="camilan"><div class="menu-item-info"><h4>Indomie Goreng/Rebus</h4><span>🍜 Camilan</span></div><div class="menu-price">Rp 15.000</div></div>
+      <!-- Minuman -->
+      <div class="menu-item" data-cat="minuman"><div class="menu-item-info"><h4>Kopi Hitam / Susu</h4><span>☕ Minuman</span></div><div class="menu-price">Rp 10.000</div></div>
+      <div class="menu-item" data-cat="minuman"><div class="menu-item-info"><h4>Teh Manis Panas/Dingin</h4><span>🍵 Minuman</span></div><div class="menu-price">Rp 5.000</div></div>
+      <div class="menu-item" data-cat="minuman"><div class="menu-item-info"><h4>Air Mineral Botol</h4><span>💧 Minuman</span></div><div class="menu-price">Rp 5.000</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery-section" id="galeri">
+  <div style="max-width:100000000000000000000000000000000000000000px;margin:0 auto;">
+    <div class="section-header text-center">
+      <span class="section-tag" style="background:rgba(255,255,255,.1);color:rgba(255, 255, 255, 0.781);">📸 Galeri</span>
+      <h2 class="section-title">Keindahan Bukit Senyum</h2>
+      <p class="section-sub">Setiap sudut Bukit Senyum menyimpan keindahan yang layak untuk diabadikan.</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="gal-item gc1 g1 landscape" ="min: height:200px;px;">
+        <div class="gal-placeholder"> <img src="gambar_4.jpeg""> </div>
+        <div class="gal-overlay"><span>🔍</span></div>
+        <span class="gal-label">Panorama Puncak</span>
+      </div>
+      <div class="gal-item gc2 potret"><div class="gal-placeholder"><img src="gambar 8.jpeg"><span>🔍</span></div><span class="gal-label">Area Camping</span></div>
+      <div class="gal-item gc3"><div class="gal-placeholder"><img src="gambar 1.jpeg"gal-overlay"><span>🔍</span></div><span class="gal-label">Pendopo</span></div>
+      <div class="gal-item gc4"><div class="gal-placeholder"><img src="gambar 6.jpeg"gal-overlay"><span>🔍</span></div><span class="gal-label">Aestetic</span></div>
+      <div class="gal-item gc5"><div class="gal-placeholder"><img src="gambar 7.jpeg"gal-overlay"><span>🔍</span></div><span class="gal-label">Jalur Hijau</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- KONTAK / RESERVASI -->
+<section class="kontak-section" id="kontak">
+  <div style="max-width:1100px;margin:0 auto;">
+    <div class="section-header">
+      <span class="section-tag">📞 Hubungi Kami</span>
+      <h2 class="section-title">Reservasi & Informasi</h2>
+      <p class="section-sub">Reservasi minimal 1×24 jam sebelum kunjungan. Kami siap membantu setiap saat.</p>
+    </div>
+    <div class="kontak-wrap">
+      <div class="kontak-info">
+        <h3>Informasi Kontak</h3>
+        <div class="kontak-item"><div class="k-icon">📍</div><div><div class="k-label">Alamat</div><div class="k-val">Bukit Senyum,Motung,Kecamatan Ajibata,Kabupaten Toba,Sumatera Utara.</div></div></div>
+        <div class="kontak-item"><div class="k-icon">📱</div><div><div class="k-label">WhatsApp</div><div class="k-val">+62 81904263575</div></div></div>
+        <div class="kontak-item"><div class="k-icon">📧</div><div><div class="k-label">Media sosial</div><div class="k-val">IG:Bukit senyum Motung FB:Manurung Motung</div></div></div>
+        <div class="kontak-item"><div class="k-icon">⏰</div><div><div class="k-label">Jam Operasional</div><div class="k-val">07.00 – 20.00 WIB · Setiap Hari</div></div></div>
+        <div class="map-placeholder">🗺️</div>
+      </div>
+      <div class="form-card">
+        <h3>Form Reservasi</h3>
+        <div class="form-group"><label>Nama Lengkap *</label><input type="text" placeholder="Nama Anda" id="fNama"/></div>
+        <div class="form-group"><label>No. WhatsApp *</label><input type="tel" placeholder="08xx-xxxx-xxxx" id="fWa"/></div>
+        <div class="form-group"><label>Jenis Fasilitas *</label>
+          <select id="fFasilitas">
+            <option value="">-- Pilih Fasilitas --</option>
+            <option>Camping Reguler (Rp 130.000/malam)</option>
+            <option>Camping Reguler (Rp 250.000/malam)</option>
+            <option>camping Reguler (Rp 350.000/malam)</option>
+            <option>Gazebo Kecil (Rp 30.000/sesi)</option>
+            <option>Gazebo kecil+tikar (Rp 50.000/full day)</option>
+            <option>Pendopo Besar (Rp 300.000/full day)</option>
+            <option>Glamping (Rp 1.250.000-1.950.000)</option>
+          </select>
+        </div>
+        <div class="form-group"><label>Tanggal Kunjungan *</label><input type="date" id="fTgl"/></div>
+        <div class="form-group"><label>Jumlah Tamu</label><input type="number" placeholder="Contoh: 4" min="1" id="fTamu"/></div>
+        <div class="form-group"><label>Pesan / Pertanyaan</label><textarea placeholder="Tuliskan pertanyaan atau kebutuhan khusus Anda..." id="fPesan"></textarea></div>
+        <button class="btn-submit" onclick="kirimReservasi()">📋 Kirim Reservasi</button>
+        <a href=" https://wa.me/message/Z3C4OXAPXAH4B1" class="wa-btn" target="_blank">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Chat WhatsApp Langsung
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="#" class="nav-logo" style="margin-bottom:12px;display:inline-flex;">
+        <div class="logo-icon" style="width:32px;height:32px;font-size:14px;"></div>
+        <span class="logo-text" style="font-size:1.2rem;">Bukit<span>Senyum</span></span>
+      </a>
+      <p>Destinasi wisata alam perbukitan di Sumatera Utara yang menawarkan pengalaman camping, pendopo, dan kuliner lokal yang tak terlupakan.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigasi</h4>
+      <ul>
+        <li><a href="#beranda">Beranda</a></li>
+        <li><a href="#tiket">Harga Tiket</a></li>
+        <li><a href="#paket">Camping & Pendopo</a></li>
+        <li><a href="#menu">Menu Makanan</a></li>
+        <li><a href="#galeri">Galeri</a></li>
+        <li><a href="#kontak">Reservasi</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Kontak</h4>
+      <ul>
+        <li><a href="#">📱 +62 812-XXXX-XXXX</a></li>
+        <li><a href="#">📧 bukit wsenyum Motung</a></li>
+        <li><a href="#">📍 Sumatera Utara</a></li>
+        <li><a href="#">⏰ 07.00–20.00 WIB</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 BukitSenyum.id — Hak Cipta Dilindungi</span>
+    <span class="identity">Prototipe · Tugas RPL · <strong style="color:rgba(255,255,255,.4)">[Rivanny simanjuntak] · [NIM] · [KELAS]</strong></span>
+  </div>
+</footer>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script>
+  function toggleMenu(){
+    document.getElementById('navMenu').classList.toggle('open');
+  }
+
+  function showTab(name, btn){
+    document.querySelectorAll('.tab-content').forEach(t=>t.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+    document.getElementById('tab-'+name).classList.add('active');
+    btn.classList.add('active');
+  }
+
+  function filterMenu(cat, btn){
+    document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.menu-item').forEach(item=>{
+      item.style.display = (cat==='all' || item.dataset.cat===cat) ? 'flex' : 'none';
+    });
+  }
+
+  function showToast(msg){
+    const t=document.getElementById('toast');
+    t.textContent=msg; t.classList.add('show');
+    setTimeout(()=>t.classList.remove('show'),3500);
+  }
+
+  function kirimReservasi(){
+    const nama=document.getElementById('fNama').value.trim();
+    const wa=document.getElementById('fWa').value.trim();
+    const fas=document.getElementById('fFasilitas').value;
+    const tgl=document.getElementById('fTgl').value;
+    if(!nama||!wa||!fas||!tgl){showToast('⚠️ Harap lengkapi semua field wajib!');return;}
+    showToast('✅ Reservasi terkirim! Kami akan menghubungi Anda segera.');
+    ['fNama','fWa','fTamu','fPesan'].forEach(id=>document.getElementById(id).value='');
+    document.getElementById('fFasilitas').value='';
+    document.getElementById('fTgl').value='';
+  }
+
+  // Navbar scroll effect
+  window.addEventListener('scroll',()=>{
+    const nav=document.getElementById('navbar');
+    nav.style.background = window.scrollY>50 ? 'rgba(13,43,30,.98)' : 'rgba(13,43,30,.95)';
+  });
+
+  // Set min date for reservasi
+  const today=new Date().toISOString().split('T')[0];
+  document.getElementById('fTgl').setAttribute('min',today);
+</script>
+</body>
+</html>
